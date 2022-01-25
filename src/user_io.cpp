@@ -36,7 +36,7 @@ int askQuestions3(std::istream& is, std::ostream& os) {
     number = getDouble(is, os, p3);
 
     for (int i = 1; i <= integer; i++) {
-        std::cout << i << " " << color << " " << number << std::endl;
+        std::cout << i << " " << color << " " << number << "\n";
     }
 
     return integer;
