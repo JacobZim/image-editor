@@ -39,5 +39,5 @@ int askQuestions3(std::istream& is, std::ostream& os) {
         std::cout << i << " " << color << " " << number << std::endl;
     }
 
-    return number;
+    return integer;
 }
