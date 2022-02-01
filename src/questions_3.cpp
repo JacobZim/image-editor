@@ -4,6 +4,5 @@
 
 
 int main() {
-    assignment1(std::cin, std::cout);
-    return 0;
+    return assignment1(std::cin, std::cout);
 }
