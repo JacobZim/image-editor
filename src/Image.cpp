@@ -2,7 +2,7 @@
 
 
 Image::Image() : height(0), width(0) {}  // default constructor
-Image::Image(const int& height, const int& width) {;
+Image::Image(const int& height, const int& width) {
     setHeight(height);
     setWidth(width);
     }
@@ -18,10 +18,10 @@ bool Image::indexValid(const int& row, const int& column, const int& channel) co
 	bool ifColumn = false;
 	bool ifChannel = false;
 	bool answer = false;
-	if((row <= height) and (row >= 0)) {
+	if((row < height) and (row >= 0)) {
 		ifRow = true ;
 		}
-	if((column <= width) and (column >= 0)) {
+	if((column < width) and (column >= 0)) {
 		ifColumn = true;
 	};
 	if((channel <= 2) and (channel >= 0)) {
