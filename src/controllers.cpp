@@ -11,3 +11,10 @@ int assignment2( std::istream& is, std:: ostream& os ) {
     drawAsciiImage(is, os, img);
     return 0;
 }
+
+int assignment3( std::istream& is, std::ostream& os ) {
+    PPM img;
+    stripedDiagonalPattern(is, os, img);
+    writeUserImage(is, os, img);
+    return 0;
+}

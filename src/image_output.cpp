@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+#include <fstream>
 #include "image_menu.h"
 
 
@@ -33,4 +35,11 @@ void drawAsciiImage( std::istream& is, std::ostream& os, const Image& image ) {
 	
 	os << newLine << std::endl ;
     };
+}
+
+void writeUserImage( std::istream& is, std::ostream& os, const PPM& p ) {
+    std::string name = getString(is, os, "Output filename? ");
+    std::fstream fs;
+    fs.open(name, std::fstream::binary | std::fstream::out);
+    p.writeStream(fs);
 }

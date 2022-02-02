@@ -1,6 +1,6 @@
 #include <iostream>
 #include "image_menu.h"
-#include <iostream>
+
 
 
 void diagonalQuadPattern( std::istream& is, std::ostream& os, Image& image ) {
@@ -45,4 +45,53 @@ void diagonalQuadPattern( std::istream& is, std::ostream& os, Image& image ) {
 			image.setChannel(row, col, 1, ((2*row) + (2*col)) % 256);
 		}};
 	return;
-	}
+}
+
+void stripedDiagonalPattern( std::istream& is, std::ostream& os, PPM& p ) {
+    int height = getInteger(is, os, "Image height? ");
+    int width = getInteger( is, os, "Image width? ");
+    p.setHeight(height);
+    p.setWidth(width);
+    int mcv = (height + width) / 3;
+    if (mcv > 255) {
+        mcv = 255;
+    }
+    p.setMaxColorValue(mcv);
+    int row, col;
+    //define red channel values
+    for ( row = 0; row < height / 2; row++) {
+        for( col = 0; col < width; col++) {
+            p.setPixel(row, col, 0, -1, -1);
+        }
+    }
+    for( row = height / 2; row < height; row++) {
+        if(row % 3 == 0) {
+            for( col = 0; col < width; col++) {
+                p.setPixel(row, col, 0, -1, -1);
+            }
+        } else {
+            for( col = 0; col < width; col++) {
+                p.setPixel(row, col, mcv, -1, -1);
+            }
+        }
+    }
+    //define green channel values
+    
+    for( row = 0; row < height; row++) {
+        for( col = 0; col < width; col++) {
+            p.setPixel(row, col, -1, (row + width - col - 1)/mcv, -1);
+        }
+    }
+    // define blue channel values
+    for( row = 0; row < height; row++) {
+        for( col = 0; col < width; col++) {
+            if(col < row) {
+                p.setPixel(row, col, -1, -1, 0);
+            } else {
+                p.setPixel(row, col, -1, -1, mcv);
+            }
+        }
+    }
+
+
+}
