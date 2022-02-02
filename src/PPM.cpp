@@ -13,8 +13,10 @@ int PPM::getMaxColorValue( ) const {
     return mMaxColorValue;
 }
 bool PPM::valueValid( const int& value) const {
-    if(value <= mMaxColorValue && value > 0) {
-        return true;
+    if(value <= mMaxColorValue) {
+        if(value > 0) {
+            return true;
+        }
     }
     return false;
 }
