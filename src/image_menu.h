@@ -19,4 +19,9 @@ void writeUserImage( std::istream& is, std::ostream& os, const PPM& p );
 void stripedDiagonalPattern( std::istream& is, std::ostream& os, PPM& p );
 int assignment3( std::istream& is, std::ostream& os );
 
+int askHeroQuestions(std::istream& is, std::ostream& os);
+int hero( std::istream& is, std::ostream& os );
+
+void simpleSquaresPattern(std::istream& is, std::ostream& os, Image& image);
+int simple_squares_ascii(std::istream& is, std::ostream& os);
 #endif /*_IMAGE_MENU_H_*/

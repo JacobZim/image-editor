@@ -2,7 +2,7 @@
 
 CXXFLAGS := -std=c++11 -Werror -Wall -Wpedantic -Wextra
 
-all: hello questions_3 ascii_image image_file
+all: hello questions_3 ascii_image image_file hero simple_squares_ascii
 
 
 
@@ -52,6 +52,18 @@ image_file.o : image_file.cpp image_menu.h
 	g++ $(CXXFLAGS) -c -o image_file.o image_file.cpp 
 
 
+hero : hero.o image_menu.h user_io.o controllers.o Image.o image_drawing.o PPM.o image_output.o
+	g++ $(CXXFLAGS) -o hero hero.o user_io.o controllers.o Image.o image_drawing.o PPM.o image_output.o
+
+hero.o : hero.cpp image_menu.h
+	g++ $(CXXFLAGS) -c -o hero.o hero.cpp
+
+
+simple_squares_ascii : simple_squares_ascii.o hero.o image_menu.h user_io.o controllers.o Image.o image_drawing.o PPM.o image_output.o
+	g++ $(CXXFLAGS) -o simple_squares_ascii simple_squares_ascii.o user_io.o controllers.o Image.o image_drawing.o PPM.o image_output.o
+
+simple_squares_ascii.o : simple_squares_ascii.cpp image_menu.h
+	g++ $(CXXFLAGS) -c -o simple_squares_ascii.o simple_squares_ascii.cpp
 
 user_io.o : user_io.cpp image_menu.h 
 	g++ $(CXXFLAGS) -c -o user_io.o user_io.cpp

@@ -18,3 +18,14 @@ int assignment3( std::istream& is, std::ostream& os ) {
     writeUserImage(is, os, img);
     return 0;
 }
+
+int hero( std::istream& is, std::ostream& os ) {
+    return askHeroQuestions(is, os);
+}
+
+int simple_squares_ascii(std::istream& is, std::ostream& os) {
+    Image img;
+    simpleSquaresPattern(is, os, img);
+    drawAsciiImage(is, os, img);
+    return 0;
+}

@@ -102,3 +102,39 @@ void stripedDiagonalPattern( std::istream& is, std::ostream& os, PPM& p ) {
 
 
 }
+
+void simpleSquaresPattern(std::istream& is, std::ostream& os, Image& image) {
+    int size, row, col;
+    size = getInteger(is, os, "Image size? ");
+    image.setHeight(size);
+    image.setWidth(size);
+
+
+    for(row = 0; row < size / 2; row++) {
+        for( col = 0; col < size; col++) {
+            image.setChannel(row, col, 0, 127);
+        }
+    }
+    for(row = size / 2; row < size; row++) {
+        for( col = 0; col < size; col++) {
+            image.setChannel(row, col, 0, 255);
+        }
+    }
+
+    for(row = 0; row < size ; row++) {
+        for( col = 0; col < size / 2; col++) {
+            image.setChannel(row, col, 1, 0);
+        }
+    }
+    for(row = size; row < size; row++) {
+        for( col = size / 2; col < size; col++) {
+            image.setChannel(row, col, 1, 255);
+        }
+    }
+
+    for(row = size; row < size; row++) {
+        for( col = size; col < size; col++) {
+            image.setChannel(row, col, 2, 255);
+        }
+    }
+}

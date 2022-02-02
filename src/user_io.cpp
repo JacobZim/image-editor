@@ -41,3 +41,12 @@ int askQuestions3(std::istream& is, std::ostream& os) {
 
     return integer;
 }
+
+int askHeroQuestions( std::istream& is, std::ostream& os) {
+    std::string hero;
+    int year;
+    hero = getString(is, os, "Who is your hero? ");
+    year = getInteger(is, os, "What year were they born? ");
+    os << hero << " was born in " << year << "." << std::endl ;
+    return year;
+}
