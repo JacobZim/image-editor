@@ -9,9 +9,9 @@ void drawAsciiImage( std::istream& is, std::ostream& os, const Image& image ) {
 	double str; //strength
 	std::string newLine;
 	(void) is;
-	for(row = 0; row <= image.getHeight(); row++) {
+	for(row = 0; row < image.getHeight(); row++) {
 		newLine = "";
-		for(col = 0; col <= image.getWidth(); col++) {
+		for(col = 0; col < image.getWidth(); col++) {
 			str = 0;
 			for(chan = 0; chan <= 2; chan++) {
 				str = str + image.getChannel(row, col, chan);
