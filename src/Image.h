@@ -16,8 +16,8 @@ public:
     bool indexValid( const int& row, const int& column, const int& channel ) const;
     int index( const int& row, const int& column, const int& channel ) const;
 protected:
-    int width;
     int height;
+    int width;
     std::vector<int> mVector;
 private:
 };
