@@ -8,10 +8,10 @@ Image::Image(const int& height, const int& width) {;
     }
 	
 int Image::getHeight() const {
-	return height - 1;
+	return height ;
 	}
 int Image::getWidth() const {
-	return width - 1;
+	return width ;
 	}
 bool Image::indexValid(const int& row, const int& column, const int& channel) const {
 	bool ifRow = false;
