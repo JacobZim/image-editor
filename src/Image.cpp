@@ -2,9 +2,10 @@
 
 
 Image::Image() : height(0), width(0) {}  // default constructor
-Image::Image(const int& height, const int& width)
-	: height(height), width(width){
-	mVector.resize(height * width * 3);}
+Image::Image(const int& height, const int& width) {;
+    setHeight(height);
+    setWidth(width);
+    }
 	
 int Image::getHeight() const {
 	return height - 1;
