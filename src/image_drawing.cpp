@@ -1,5 +1,6 @@
 #include <iostream>
 #include "image_menu.h"
+#include <string>
 
 
 
@@ -48,17 +49,23 @@ void diagonalQuadPattern( std::istream& is, std::ostream& os, Image& image ) {
 }
 
 void stripedDiagonalPattern( std::istream& is, std::ostream& os, PPM& p ) {
-    int height = getInteger(is, os, "Image height? ");
-    int width = getInteger( is, os, "Image width? ");
+    
+    int height = 0, width = 0;
+    height = getInteger( is, os, "Image height? ");
+    width = getInteger( is, os, "Image width? ");
+    os << "flag";
     p.setHeight(height);
     p.setWidth(width);
+    
     int mcv = (height + width) / 3;
     if (mcv > 255) {
         mcv = 255;
     }
+    
     p.setMaxColorValue(mcv);
     int row, col;
     //define red channel values
+    
     for ( row = 0; row < height / 2; row++) {
         for( col = 0; col < width; col++) {
             p.setPixel(row, col, 0, -1, -1);
