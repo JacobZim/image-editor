@@ -4,4 +4,4 @@
 
 int main() {
 	return assignment2( std::cin, std::cout);
-};
+}
