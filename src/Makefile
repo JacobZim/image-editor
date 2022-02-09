@@ -1,8 +1,10 @@
 
 
 CXXFLAGS := -std=c++11 -Werror -Wall -Wpedantic -Wextra
+OBJECTS := Image.o image_drawing.o image_output.o PPM.o user_io.o controllers.o
 
-all: hello questions_3 ascii_image image_file hero simple_squares_ascii
+
+all: hello questions_3 ascii_image image_file simple_squares_ascii hero 
 
 
 
@@ -14,16 +16,16 @@ hello.o: hello.cpp
 
 
 
-questions_3: questions_3.o image_menu.h user_io.o controllers.o Image.o image_drawing.o PPM.o image_output.o
-	g++ $(CXXFLAGS) -o questions_3 questions_3.o user_io.o controllers.o Image.o image_drawing.o PPM.o image_output.o
+questions_3: questions_3.o image_menu.h $(OBJECTS)
+	g++ $(CXXFLAGS) -o questions_3 questions_3.o $(OBJECTS)
 
 questions_3.o : questions_3.cpp image_menu.h 
 	g++ $(CXXFLAGS) -c -o questions_3.o questions_3.cpp 
 
 
 
-ascii_image : ascii_image.o image_menu.h Image.o image_drawing.o image_output.o controllers.o user_io.o PPM.o 
-	g++ $(CXXFLAGS) -o ascii_image ascii_image.o Image.o image_drawing.o image_output.o controllers.o user_io.o PPM.o 
+ascii_image : ascii_image.o image_menu.h $(OBJECTS)
+	g++ $(CXXFLAGS) -o ascii_image ascii_image.o $(OBJECTS)
 
 ascii_image.o : ascii_image.cpp image_menu.h
 	g++ $(CXXFLAGS) -c -o ascii_image.o ascii_image.cpp 
@@ -39,8 +41,8 @@ image_output.o : image_output.cpp image_menu.h
 
 
 
-image_file : image_file.o image_menu.h Image.o image_drawing.o image_output.o controllers.o user_io.o PPM.o 
-	g++ $(CXXFLAGS) -o image_file image_file.o Image.o image_drawing.o image_output.o controllers.o user_io.o PPM.o 
+image_file : image_file.o image_menu.h $(OBJECTS)
+	g++ $(CXXFLAGS) -o image_file image_file.o $(OBJECTS)
 
 image_file.o : image_file.cpp image_menu.h 
 	g++ $(CXXFLAGS) -c -o image_file.o image_file.cpp 
@@ -48,20 +50,19 @@ image_file.o : image_file.cpp image_menu.h
 PPM.o : PPM.cpp image_menu.h 
 	g++ $(CXXFLAGS) -c -o PPM.o PPM.cpp 
 
-image_file.o : image_file.cpp image_menu.h 
-	g++ $(CXXFLAGS) -c -o image_file.o image_file.cpp 
 
 
-hero : hero.o image_menu.h user_io.o controllers.o Image.o image_drawing.o PPM.o image_output.o
-	g++ $(CXXFLAGS) -o hero hero.o user_io.o controllers.o Image.o image_drawing.o PPM.o image_output.o
+
+hero : hero.o image_menu.h $(OBJECTS)
+	g++ $(CXXFLAGS) -o hero hero.o $(OBJECTS)
 
 hero.o : hero.cpp image_menu.h
 	g++ $(CXXFLAGS) -c -o hero.o hero.cpp
 
 
-simple_squares_ascii : simple_squares_ascii.o hero.o image_menu.h user_io.o controllers.o Image.o image_drawing.o PPM.o image_output.o
-	g++ $(CXXFLAGS) -o simple_squares_ascii simple_squares_ascii.o user_io.o controllers.o Image.o image_drawing.o PPM.o image_output.o
-
+simple_squares_ascii : simple_squares_ascii.o image_menu.h $(OBJECTS)
+	g++ $(CXXFLAGS) -o simple_squares_ascii simple_squares_ascii.o $(OBJECTS)
+	
 simple_squares_ascii.o : simple_squares_ascii.cpp image_menu.h
 	g++ $(CXXFLAGS) -c -o simple_squares_ascii.o simple_squares_ascii.cpp
 
@@ -83,3 +84,5 @@ clean:
 	-rm -f questions_3
 	-rm -f ascii_image 
 	-rm -f image_file
+	-rm -f hero 
+	-rm -f simple_squares_ascii

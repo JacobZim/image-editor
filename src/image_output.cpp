@@ -39,7 +39,7 @@ void drawAsciiImage( std::istream& is, std::ostream& os, const Image& image ) {
 
 void writeUserImage( std::istream& is, std::ostream& os, const PPM& p ) {
     std::string name = getString(is, os, "Output filename? ");
-    std::fstream fs;
-    fs.open(name, std::fstream::binary | std::fstream::out);
+    std::ofstream fs;
+    fs.open(name, std::fstream::binary);
     p.writeStream(fs);
 }

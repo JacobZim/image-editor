@@ -49,11 +49,14 @@ void diagonalQuadPattern( std::istream& is, std::ostream& os, Image& image ) {
 }
 
 void stripedDiagonalPattern( std::istream& is, std::ostream& os, PPM& p ) {
-    
+    /*(void) is;
+    (void) os;
+    (void) p;*/
     int height = 0, width = 0;
     height = getInteger( is, os, "Image height? ");
     width = getInteger( is, os, "Image width? ");
-    os << "flag";
+    
+    
     p.setHeight(height);
     p.setWidth(width);
     
@@ -63,6 +66,7 @@ void stripedDiagonalPattern( std::istream& is, std::ostream& os, PPM& p ) {
     }
     
     p.setMaxColorValue(mcv);
+    
     int row, col;
     //define red channel values
     
@@ -70,14 +74,12 @@ void stripedDiagonalPattern( std::istream& is, std::ostream& os, PPM& p ) {
         for( col = 0; col < width; col++) {
             p.setPixel(row, col, 0, -1, -1);
         }
-    }
+    } 
     for( row = height / 2; row < height; row++) {
-        if(row % 3 == 0) {
-            for( col = 0; col < width; col++) {
+        for( col = 0; col < width; col++ ) {
+            if( (row % 3) == 0 ) {
                 p.setPixel(row, col, 0, -1, -1);
-            }
-        } else {
-            for( col = 0; col < width; col++) {
+            } else {
                 p.setPixel(row, col, mcv, -1, -1);
             }
         }
@@ -86,7 +88,7 @@ void stripedDiagonalPattern( std::istream& is, std::ostream& os, PPM& p ) {
     
     for( row = 0; row < height; row++) {
         for( col = 0; col < width; col++) {
-            p.setPixel(row, col, -1, (row + width - col - 1)/mcv, -1);
+            p.setPixel(row, col, -1, (row + width - col - 1) % (mcv + 1), -1);
         }
     }
     // define blue channel values
@@ -98,8 +100,12 @@ void stripedDiagonalPattern( std::istream& is, std::ostream& os, PPM& p ) {
                 p.setPixel(row, col, -1, -1, mcv);
             }
         }
-    }
-
+    }/*
+    for( row = 0; row < height; row++) {
+        for( col = 0; col < width; col++) {
+            p.setPixel(row, col, 255, 255, 255);
+        }
+    }*/
 
 }
 
@@ -109,7 +115,7 @@ void simpleSquaresPattern(std::istream& is, std::ostream& os, Image& image) {
     image.setHeight(size);
     image.setWidth(size);
 
-
+    //red
     for(row = 0; row < size / 2; row++) {
         for( col = 0; col < size; col++) {
             image.setChannel(row, col, 0, 127);
@@ -120,20 +126,20 @@ void simpleSquaresPattern(std::istream& is, std::ostream& os, Image& image) {
             image.setChannel(row, col, 0, 255);
         }
     }
-
-    for(row = 0; row < size ; row++) {
+    //blue
+    for(row = 0; row < size; row++) {
         for( col = 0; col < size / 2; col++) {
             image.setChannel(row, col, 1, 0);
         }
     }
-    for(row = size; row < size; row++) {
+    for(row = 0; row < size; row++) {
         for( col = size / 2; col < size; col++) {
             image.setChannel(row, col, 1, 255);
         }
     }
-
+    //green
     for(row = size; row < size; row++) {
-        for( col = size; col < size; col++) {
+        for( col = 0; col < size; col++) {
             image.setChannel(row, col, 2, 255);
         }
     }

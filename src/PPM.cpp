@@ -27,7 +27,7 @@ void PPM::setMaxColorValue( const int& max_color_value) {
 }
 void PPM::setChannel( const int& row, const int& column, const int& channel, const int& value) {
     if(valueValid(value)) {
-        setChannel(row, column, channel, value);
+        Image::setChannel(row, column, channel, value);
     }
 }
 void PPM::setPixel( const int& row, const int& column, const int& red, const int& green, const int& blue ) {
@@ -37,7 +37,10 @@ void PPM::setPixel( const int& row, const int& column, const int& red, const int
 }
 void PPM::writeStream( std::ostream& os) const {
     os << "P6 " << width << " " << height << " " << mMaxColorValue << "\n";
+
     for(unsigned long i = 0; i < mVector.size(); i++) {
-        os << mVector[i];
+        int x = mVector[i];
+        os.write((char *) &x, sizeof(int));
+        
     }
 }
