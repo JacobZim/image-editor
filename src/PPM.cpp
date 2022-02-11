@@ -39,8 +39,8 @@ void PPM::writeStream( std::ostream& os) const {
     os << "P6 " << width << " " << height << " " << mMaxColorValue << "\n";
 
     for(unsigned long i = 0; i < mVector.size(); i++) {
-        int x = mVector[i];
-        os.write((char *) &x, sizeof(int));
+        unsigned char x = mVector[i];
+        os.write((char *) &x, sizeof(x));
         
     }
 }
