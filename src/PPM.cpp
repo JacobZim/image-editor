@@ -46,22 +46,44 @@ void PPM::writeStream( std::ostream& os) const {
 }
 
 void PPM::readStream( std::istream& is ) {
-    int w, h, mcv, current, end, leftover;
+    int w, h, mcv;// current, end, leftover;
     std::string format_code, na;
     is >> format_code;
     is >> w;
     is >> h;
     is >> mcv;
 
-    current = is.tellg(); //mark current location
+    this->setWidth(w);
+    this->setHeight(h);
+    this->setMaxColorValue(mcv);
 
+    char *PPMdata = new char [1]; 
+    is.read(PPMdata, 1); //get rid of newline character
+
+    /*
+    current = is.tellg(); //mark current location
     is.seekg(0, is.end); //mark end of file
     end = is.tellg();
-
     is.seekg(current); // move back to current location
-
     leftover = end - current; //find left over length
-
-    char *PPMdata = new char [leftover];
     is.read( PPMdata, leftover ); //read leftover data
+    */
+
+    //char *buffer = new char [0];
+    unsigned char mDataBuffer[1];
+
+    for(int i = 0; i < h; i++) {
+        for( int j = 0; j < w; j++) {
+            for( int k = 0; k <= 2; k++) {
+                /*
+                //is.read((char*) buffer, sizeof(buffer[0]) ); //read one byte of data
+                //int a = ((i * w * 3) + (j * 3)) + k ;
+                */
+                
+                is.read((char*)(&mDataBuffer[0]), 1);
+                
+                this->setChannel(i,j,k,mDataBuffer[0]);
+            }
+        }
+    }
 }
