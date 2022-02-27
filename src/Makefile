@@ -62,7 +62,7 @@ hero.o : hero.cpp image_menu.h
 
 simple_squares_ascii : simple_squares_ascii.o image_menu.h $(OBJECTS)
 	g++ $(CXXFLAGS) -o simple_squares_ascii simple_squares_ascii.o $(OBJECTS)
-	
+
 simple_squares_ascii.o : simple_squares_ascii.cpp image_menu.h
 	g++ $(CXXFLAGS) -c -o simple_squares_ascii.o simple_squares_ascii.cpp
 
@@ -73,8 +73,11 @@ controllers.o : controllers.cpp image_menu.h
 	g++ $(CXXFLAGS) -c -o controllers.o controllers.cpp 
 
 
+ActionData.o : ActionData.cpp ActionData.h 
+	g++ $(CXXFLAGS) -c -o $@ $<  
 
-
+MenuData.o : MenuData.cpp MenuData.h 
+	g++ $(CXXFLAGS) -c -o $@ $< 
 
 
 

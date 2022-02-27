@@ -44,3 +44,24 @@ void PPM::writeStream( std::ostream& os) const {
         
     }
 }
+
+void PPM::readStream( std::istream& is ) {
+    int w, h, mcv, current, end, leftover;
+    std::string format_code, na;
+    is >> format_code;
+    is >> w;
+    is >> h;
+    is >> mcv;
+
+    current = is.tellg(); //mark current location
+
+    is.seekg(0, is.end); //mark end of file
+    end = is.tellg();
+
+    is.seekg(current); // move back to current location
+
+    leftover = end - current; //find left over length
+
+    char *PPMdata = new char [leftover];
+    is.read( PPMdata, leftover ); //read leftover data
+}
