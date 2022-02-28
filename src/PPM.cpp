@@ -87,3 +87,190 @@ void PPM::readStream( std::istream& is ) {
         }
     }
 }
+
+
+bool PPM::operator==( const PPM& rhs ) const {
+    int s1, s2;
+    s1 = this->getWidth() * this->getHeight();
+    s2 = rhs.getWidth() * rhs.getHeight();
+    return s1 == s2;
+}
+bool PPM::operator!=( const PPM& rhs ) const {
+    return !(*this==rhs);
+}
+bool PPM::operator<( const PPM& rhs ) const {
+    int s1, s2;
+    s1 = this->getWidth() * this->getHeight();
+    s2 = rhs.getWidth() * rhs.getHeight();
+    return s1 < s2;
+}
+bool PPM::operator<=( const PPM& rhs ) const {
+    int s1, s2;
+    s1 = this->getWidth() * this->getHeight();
+    s2 = rhs.getWidth() * rhs.getHeight();
+    return s1 <= s2;
+}
+bool PPM::operator>( const PPM& rhs ) const {
+    int s1, s2;
+    s1 = this->getWidth() * this->getHeight();
+    s2 = rhs.getWidth() * rhs.getHeight();
+    return s1 > s2;
+}
+bool PPM::operator>=( const PPM& rhs ) const {
+    int s1, s2;
+    s1 = this->getWidth() * this->getHeight();
+    s2 = rhs.getWidth() * rhs.getHeight();
+    return s1 >= s2;
+}
+PPM& PPM::operator+=( const PPM& rhs ) {
+    int w, h, s;
+    w = this->getWidth();
+    h = this->getHeight();
+    for(int i=0; i < h; i++ ) {
+        for(int j=0; j < w; j++ ) {
+            for(int c=0; c < 3; c++ ) {
+                s = this->getChannel(i,j,c) + rhs.getChannel(i,j,c);
+                if(s>this->getMaxColorValue()) {
+                    s = this->getMaxColorValue();
+                }
+                this->setChannel(i,j,c,s);
+            }
+        }
+    }
+    return *this;
+}
+PPM& PPM::operator-=( const PPM& rhs ) {
+    int w, h, s;
+    w = this->getWidth();
+    h = this->getHeight();
+    for(int i=0; i < h; i++ ) {
+        for(int j=0; j < w; j++ ) {
+            for(int c=0; c < 3; c++ ) {
+                s = this->getChannel(i,j,c) - rhs.getChannel(i,j,c);
+                if(s<0) {
+                    s = 0;
+                }
+                this->setChannel(i,j,c,s);
+            }
+        }
+    }
+    return *this;
+}
+PPM& PPM::operator*=( const double& rhs ) {
+    int w, h, s;
+    w = this->getWidth();
+    h = this->getHeight();
+    for(int i=0; i < h; i++ ) {
+        for(int j=0; j < w; j++ ) {
+            for(int c=0; c < 3; c++ ) {
+                s = this->getChannel(i,j,c) * rhs;
+                if(s>this->getMaxColorValue()) {
+                    s = this->getMaxColorValue();
+                } else if(s<0) {
+                    s = 0;
+                }
+                this->setChannel(i,j,c,s);
+            }
+        }
+    }
+  return *this;
+}
+PPM& PPM::operator/=( const double& rhs ) {
+    int w, h, s;
+    w = this->getWidth();
+    h = this->getHeight();
+    for(int i=0; i < h; i++ ) {
+        for(int j=0; j < w; j++ ) {
+            for(int c=0; c < 3; c++ ) {
+                s = this->getChannel(i,j,c) / rhs;
+                if(s>this->getMaxColorValue()) {
+                    s = this->getMaxColorValue();
+                } else if(s<0) {
+                    s = 0;
+                }
+                this->setChannel(i,j,c,s);
+            }
+        }
+    }
+    return *this;
+}
+PPM PPM::operator+( const PPM& rhs ) const {
+    PPM result( this->getHeight(), this->getWidth());
+    result.setMaxColorValue(this->getMaxColorValue());
+    int w, h, s;
+    w = this->getWidth();
+    h = this->getHeight();
+    for(int i=0; i < h; i++ ) {
+        for(int j=0; j < w; j++ ) {
+            for(int c=0; c < 3; c++ ) {
+                s = this->getChannel(i,j,c) + rhs.getChannel(i,j,c);
+                if(s>this->getMaxColorValue()) {
+                    s = this->getMaxColorValue();
+                }
+                result.setChannel(i,j,c,s);
+            }
+        }
+    }
+    return result;
+}
+PPM PPM::operator-( const PPM& rhs ) const {
+    PPM result( this->getHeight(), this->getWidth());
+    result.setMaxColorValue(this->getMaxColorValue());
+    int w, h, s;
+    w = this->getWidth();
+    h = this->getHeight();
+    for(int i=0; i < h; i++ ) {
+        for(int j=0; j < w; j++ ) {
+            for(int c=0; c < 3; c++ ) {
+                s = this->getChannel(i,j,c) - rhs.getChannel(i,j,c);
+                if(s<0) {
+                    s = 0;
+                }
+                result.setChannel(i,j,c,s);
+            }
+        }
+    }
+    return result;
+}
+PPM PPM::operator*( const double& rhs ) const {
+    PPM result( this->getHeight(), this->getWidth());
+    result.setMaxColorValue(this->getMaxColorValue());
+    int w, h, s;
+    w = this->getWidth();
+    h = this->getHeight();
+    for(int i=0; i < h; i++ ) {
+        for(int j=0; j < w; j++ ) {
+            for(int c=0; c < 3; c++ ) {
+                s = this->getChannel(i,j,c) * rhs;
+                if(s>this->getMaxColorValue()) {
+                    s = this->getMaxColorValue();
+                } else if(s<0) {
+                    s = 0;
+                }
+                result.setChannel(i,j,c,s);
+            }
+        }
+    }
+    return result;
+}
+PPM PPM::operator/( const double& rhs ) const {
+    PPM result( this->getHeight(), this->getWidth());
+    result.setMaxColorValue(this->getMaxColorValue());
+    int w, h, s;
+    w = this->getWidth();
+    h = this->getHeight();
+    for(int i=0; i < h; i++ ) {
+        for(int j=0; j < w; j++ ) {
+            for(int c=0; c < 3; c++ ) {
+                s = this->getChannel(i,j,c) / rhs;
+                if(s>this->getMaxColorValue()) {
+                    s = this->getMaxColorValue();
+                } else if( s < 0 ) {
+                    s = 0;
+                }
+                result.setChannel(i,j,c,s);
+            }
+        }
+    }
+    return result;
+}

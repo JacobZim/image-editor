@@ -71,6 +71,16 @@ void configureMenu( MenuData& menu_data ) {
     ActionFunctionType clear = &clearAll;
     ActionFunctionType qit = &quit;
 
+    ActionFunctionType read2 = &readUserImage2;
+    ActionFunctionType pluss = &plus;
+    ActionFunctionType plusE = &plusEquals;
+    ActionFunctionType minuss = &minus;
+    ActionFunctionType minusE = &minusEquals;
+    ActionFunctionType timess = &times;
+    ActionFunctionType timesE = &timesEquals;
+    ActionFunctionType dividee = &divide;
+    ActionFunctionType divideE = &divideEquals;
+
     menu_data.addAction("draw-ascii", drawAsci, "Write output image to terminal as ASCII art.");
     menu_data.addAction("write", write, "Write output image to file.");
     menu_data.addAction("copy", cpyImage, "Copy input image 1 to output image.");
@@ -82,6 +92,16 @@ void configureMenu( MenuData& menu_data ) {
     menu_data.addAction("pixel", setPix, "Set a pixel's 3 values in input image 1.");
     menu_data.addAction("clear", clear, "Set all pixels to 0,0,0 in input image 1.");
     menu_data.addAction("quit", qit, "Quit.");
+
+    menu_data.addAction("read2", read2, "Read file into input image 2.");
+    menu_data.addAction("+", pluss, "Set output image from sum of input image 1 and input image 2.");
+    menu_data.addAction("+=", plusE, "Set input image 1 by adding in input image 2.");
+    menu_data.addAction("-", minuss, "Set output image from difference of input image 1 and input image 2.");
+    menu_data.addAction("-=", minusE, "Set input image 1 by subtracting input image 2.");
+    menu_data.addAction("*", timess, "Set output image from input image 1 multiplied by a number.");
+    menu_data.addAction("*=", timesE, "Set input image 1 by multiplying by a number.");
+    menu_data.addAction("/", dividee, "Set output image from input image 1 divided by a number.");
+    menu_data.addAction("/=", divideE, "Set input image 1 by dividing by a number.");
 }
 
 int imageMenu( std::istream& is, std::ostream& os ) {

@@ -16,6 +16,21 @@ public:
     void writeStream( std::ostream& os ) const;
     //added during assignment 4, action data menu
     void readStream( std::istream& is );
+    //assignment6 operator overloading
+    bool operator==( const PPM& rhs ) const;
+    bool operator!=( const PPM& rhs ) const;
+    bool operator<( const PPM& rhs ) const;
+    bool operator<=( const PPM& rhs ) const;
+    bool operator>( const PPM& rhs ) const;
+    bool operator>=( const PPM& rhs ) const;
+    PPM& operator+=( const PPM& rhs );
+    PPM& operator-=( const PPM& rhs );
+    PPM& operator*=( const double& rhs );
+    PPM& operator/=( const double& rhs );
+    PPM operator+( const PPM& rhs ) const;
+    PPM operator-( const PPM& rhs ) const;
+    PPM operator*( const double& rhs ) const;
+    PPM operator/( const double& rhs ) const;
 protected:
     int mMaxColorValue;
 private:
