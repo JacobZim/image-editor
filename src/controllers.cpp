@@ -54,23 +54,34 @@ void takeAction(const std::string& choice, MenuData& menu_data, ActionData& acti
     } else if(choice == "menu") {
         showMenu( menu_data, action_data );
     } else {
-        std::cout << "Unknown action " << choice << "." << std::endl;
+        action_data.getOS() << "Unknown action '" << choice << "'." << std::endl;
     }
 }
 
 void configureMenu( MenuData& menu_data ) {
-    ActionFunctionType drawAsciiImage{}, writeUserImage{}, copyImage{}, readUserImage1{}, commentLine{}, setSize{}, setMaxColorValue{}, setChannel{}, setPixel{}, clearAll{}, quit{};
-    menu_data.addAction("draw-ascii", drawAsciiImage, "Write output image to terminal as ASCII art.");
-    menu_data.addAction("write", writeUserImage, "Write output image to file.");
-    menu_data.addAction("copy", copyImage, "Copy input image 1 to output image.");
-    menu_data.addAction("read1", readUserImage1, "Read file into input image 1.");
-    menu_data.addAction("#", commentLine, "Comment to end of line.");
-    menu_data.addAction("size", setSize, "Set the size of input image 1.");
-    menu_data.addAction("max-color-value", setMaxColorValue, "Set the max color value of input image 1.");
-    menu_data.addAction("channel", setChannel, "Set a channel value in input image 1.");
-    menu_data.addAction("pixel", setPixel, "Set a pixel's 3 values in input image 1.");
-    menu_data.addAction("clear", clearAll, "Set all pixels to 0,0,0 in input image 1.");
-    menu_data.addAction("quit", quit, "Quit.");
+    ActionFunctionType drawAsci = &drawAsciiImage;
+    ActionFunctionType write = &writeUserImage;
+    ActionFunctionType cpyImage = &copyImage;
+    ActionFunctionType readImage1 = &readUserImage1;
+    ActionFunctionType comment = &commentLine;
+    ActionFunctionType size = &setSize;
+    ActionFunctionType setMCV = &setMaxColorValue;
+    ActionFunctionType setChan = &setChannel;
+    ActionFunctionType setPix = &setPixel;
+    ActionFunctionType clear = &clearAll;
+    ActionFunctionType qit = &quit;
+
+    menu_data.addAction("draw-ascii", drawAsci, "Write output image to terminal as ASCII art.");
+    menu_data.addAction("write", write, "Write output image to file.");
+    menu_data.addAction("copy", cpyImage, "Copy input image 1 to output image.");
+    menu_data.addAction("read1", readImage1, "Read file into input image 1.");
+    menu_data.addAction("#", comment, "Comment to end of line.");
+    menu_data.addAction("size", size, "Set the size of input image 1.");
+    menu_data.addAction("max-color-value", setMCV, "Set the max color value of input image 1.");
+    menu_data.addAction("channel", setChan, "Set a channel value in input image 1.");
+    menu_data.addAction("pixel", setPix, "Set a pixel's 3 values in input image 1.");
+    menu_data.addAction("clear", clear, "Set all pixels to 0,0,0 in input image 1.");
+    menu_data.addAction("quit", qit, "Quit.");
 }
 
 int imageMenu( std::istream& is, std::ostream& os ) {

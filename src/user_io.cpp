@@ -1,6 +1,7 @@
 #include "image_menu.h"
 #include <string.h>
 #include <iostream>
+#include <fstream>
 
 
 std::string getString( ActionData& action_data, const std::string& prompt) {
@@ -56,10 +57,11 @@ std::string getChoice( ActionData& action_data ) {
     return getString( action_data, "Choice? ");
 }
 void commentLine( ActionData& action_data ) {
-    char *buffer[1];
+    char buffer;
     do {
-        action_data.getIS().read( buffer[0], sizeof(buffer[0]));
-     } while( action_data.getIS().good() && (strcmp(buffer[0], "\n") != 0));
+        buffer = action_data.getIS().get( );
+        //action_data.getIS().read( buffer[0], sizeof(buffer[0]));
+     } while( action_data.getIS().good() && ( buffer != '\n'));
 }
 void quit( ActionData& action_data ) {
     action_data.setDone();

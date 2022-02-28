@@ -41,8 +41,8 @@ int assignment1( std::istream& is, std::ostream& os );
 int assignment2( std::istream& is, std::ostream& os );
 int assignment3( std::istream& is, std::ostream& os );
 //exam 1 controllers
-int hero( ActionData& action_data );
-int simple_squares_ascii( ActionData& action_data );
+int hero( std::istream& is, std::ostream& os );
+int simple_squares_ascii( std::istream& is, std::ostream& os );
 //assignment 5
 void showMenu( MenuData& menu_data, ActionData& action_data );
 void takeAction(const std::string& choice, MenuData& menu_data, ActionData& action_data);

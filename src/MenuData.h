@@ -6,7 +6,7 @@
 #include "ActionData.h"
 
 
-typedef void (*ActionFunctionType) (ActionData& action_data);
+typedef void (*ActionFunctionType)(ActionData& action_data);
 
 
 class MenuData {

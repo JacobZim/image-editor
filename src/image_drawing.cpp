@@ -119,7 +119,7 @@ void setSize( ActionData& action_data ) {
 }
 
 void setMaxColorValue( ActionData& action_data ) {
-    int mcv = getInteger( action_data, "Mac color value? ");
+    int mcv = getInteger( action_data, "Max color value? ");
     action_data.getInputImage1().setMaxColorValue(mcv);
 }
 

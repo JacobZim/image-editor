@@ -48,11 +48,11 @@ void copyImage( ActionData& action_data ) {
 }
 
 void readUserImage1( ActionData& action_data ) {
-    std::string name;
+    std::string name = getString(action_data, "Input filename? ");
     std::ifstream fs;
     fs.open(name, std::fstream::in);
     if( !fs.good() ) {
-        std::cout << name << " failed to open." << std::endl;
+        action_data.getOS() << name << " failed to open." << std::endl;
     }
     action_data.getInputImage1().readStream(fs);
 }
