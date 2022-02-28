@@ -327,3 +327,36 @@ void PPM::grayFromLinearColorimetric( PPM& dst ) const {
         }
     }
 }
+
+void PPM::orangeFilter(PPM& dst) const {
+    dst.setHeight(this->getHeight());
+    dst.setWidth(this->getWidth());
+    dst.setMaxColorValue(this->getMaxColorValue());
+
+    int new_red, new_green, new_blue, old_red, old_green, old_blue, h, w, mcv;
+    h = this->getHeight();
+    w = this->getWidth();
+    mcv = this->getMaxColorValue();
+
+    for( int i=0; i<h; i++) {
+        for( int j=0; j<w; j++) {
+            old_red = this->getChannel(i,j,0);
+            old_green = this->getChannel(i,j,1);
+            old_blue = this->getChannel(i,j,2);
+
+            new_red = 2*(2*old_red+old_green)/3;
+            if( new_red > mcv) {
+                new_red = mcv;
+            }
+            new_green = 2*(2*old_red+old_green)/6;
+            if( new_green > mcv) {
+                new_green = mcv;
+            }
+            new_blue = old_blue/2;
+            if( new_blue > mcv) {
+                new_blue = mcv;
+            }
+            dst.setPixel(i,j, new_red, new_green, new_blue);
+        }
+    }
+}

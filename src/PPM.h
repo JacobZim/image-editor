@@ -38,6 +38,8 @@ public:
     void grayFromBlue( PPM& dst ) const;
     double linearColorimetricPixelValue( const int& row, const int& column ) const;
     void grayFromLinearColorimetric( PPM& dst ) const;
+    //exam2
+    void orangeFilter(PPM& dst) const;
 protected:
     int mMaxColorValue;
 private:

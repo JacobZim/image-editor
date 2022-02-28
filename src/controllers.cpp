@@ -89,6 +89,7 @@ void configureMenu( MenuData& menu_data ) {
     ActionFunctionType boxe = &drawBox;
 
     ActionFunctionType square = &drawSquare;
+    ActionFunctionType orange = &orangeFilter;
 
     menu_data.addAction("draw-ascii", drawAsci, "Write output image to terminal as ASCII art.");
     menu_data.addAction("write", write, "Write output image to file.");
@@ -120,6 +121,7 @@ void configureMenu( MenuData& menu_data ) {
     menu_data.addAction("box", boxe, "Draw a box shape in input image 1.");
 
     menu_data.addAction("square", square, "Draw a square shape in input image 1.");
+    menu_data.addAction("orange", orange, "Set output image from orange filter on input image 1.");
 }
 
 int imageMenu( std::istream& is, std::ostream& os ) {

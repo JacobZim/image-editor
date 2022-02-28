@@ -69,6 +69,8 @@ void grayFromRed(ActionData& action_data);
 void grayFromGreen(ActionData& action_data);
 void grayFromBlue(ActionData& action_data);
 void grayFromLinearColorimetric(ActionData& action_data);
+//exam2
+void orangeFilter(ActionData& action_data);
 
 
 
