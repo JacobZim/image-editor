@@ -88,6 +88,8 @@ void configureMenu( MenuData& menu_data ) {
     ActionFunctionType circ = &drawCircle;
     ActionFunctionType boxe = &drawBox;
 
+    ActionFunctionType square = &drawSquare;
+
     menu_data.addAction("draw-ascii", drawAsci, "Write output image to terminal as ASCII art.");
     menu_data.addAction("write", write, "Write output image to file.");
     menu_data.addAction("copy", cpyImage, "Copy input image 1 to output image.");
@@ -116,6 +118,8 @@ void configureMenu( MenuData& menu_data ) {
     menu_data.addAction("linear-gray", ling, "Set output image by linear colorimetric grayscale on input image 1.");
     menu_data.addAction("circle", circ, "Draw a circle shape in input image 1.");
     menu_data.addAction("box", boxe, "Draw a box shape in input image 1.");
+
+    menu_data.addAction("square", square, "Draw a square shape in input image 1.");
 }
 
 int imageMenu( std::istream& is, std::ostream& os ) {

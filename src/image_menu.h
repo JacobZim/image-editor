@@ -31,6 +31,8 @@ void clearAll( ActionData& action_data );
 //assignment7
 void drawCircle(ActionData& action_data);
 void drawBox(ActionData& action_data);
+//exam 2
+void drawSquare(ActionData& action_data);
 
 // image_output.cpp
 void drawAsciiImage( ActionData& action_data );
