@@ -1,7 +1,7 @@
 
 
 CXXFLAGS := -std=c++11 -Werror -Wall -Wpedantic -Wextra
-OBJECTS := Image.o image_drawing.o image_output.o PPM.o user_io.o controllers.o
+OBJECTS := Image.o image_drawing.o image_output.o PPM.o user_io.o controllers.o MenuData.o ActionData.o
 
 
 all: hello questions_3 ascii_image image_file simple_squares_ascii hero 
@@ -80,6 +80,12 @@ MenuData.o : MenuData.cpp MenuData.h
 	g++ $(CXXFLAGS) -c -o $@ $< 
 
 
+ppm_menu : ppm_menu.o image_menu.h $(OBJECTS)
+	g++ $(CXXFLAGS) -c $@ $< $(OBJECTS)
+
+ppm_menu.o : ppm_menu.cpp image_menu.h 
+	g++ $(CXXFLAGS) -c -o $@ $<
+
 
 clean:
 	-rm -f *.o *~
@@ -89,3 +95,4 @@ clean:
 	-rm -f image_file
 	-rm -f hero 
 	-rm -f simple_squares_ascii
+	-rm -f ppm_menu 

@@ -1,52 +1,66 @@
 #include "image_menu.h"
-#include <string>
+#include <string.h>
 #include <iostream>
 
-std::string getString( std::istream& is, std::ostream& os, const std::string& prompt) {
+
+std::string getString( ActionData& action_data, const std::string& prompt) {
     std::string x;
-    os << prompt;
-    is >> x;
+    action_data.getOS() << prompt;
+    action_data.getIS() >> x;
     return x;
 }
 
-int getInteger( std::istream& is, std::ostream& os, const std::string& prompt) {
+int getInteger( ActionData& action_data, const std::string& prompt) {
     int x;
-    os << prompt;
-    is >> x;
+    action_data.getOS() << prompt;
+    action_data.getIS() >> x;
     return x;
 }
 
-double getDouble( std::istream& is, std::ostream& os, const std::string& prompt ) {
+double getDouble( ActionData& action_data, const std::string& prompt ) {
     double x;
-    os << prompt;
-    is >> x;
+    action_data.getOS() << prompt;
+    action_data.getIS() >> x;
     return x;
 }
 
-int askQuestions3(std::istream& is, std::ostream& os) {
+int askQuestions3(ActionData& action_data) {
     std::string p1 = "What is your favorite color? ";
     std::string p2 = "What is your favorite integer? ";
     std::string p3 = "What is your favorite number? ";
 
     std::string color;
-    color = getString(is, os, p1);
+    color = getString( action_data, p1);
     int integer;
-    integer = getInteger(is, os, p2);
+    integer = getInteger( action_data, p2);
     double number;
-    number = getDouble(is, os, p3);
+    number = getDouble( action_data, p3);
 
     for (int i = 1; i <= integer; i++) {
-        os << i << " " << color << " " << number << std::endl;
+        action_data.getOS() << i << " " << color << " " << number << std::endl;
     }
 
     return integer;
 }
-
-int askHeroQuestions( std::istream& is, std::ostream& os) {
+int askHeroQuestions( ActionData& action_data) {
     std::string hero;
     int year;
-    hero = getString(is, os, "Who is your hero? ");
-    year = getInteger(is, os, "What year were they born? ");
-    os << hero << " was born in " << year << "." << std::endl ;
+    hero = getString( action_data, "Who is your hero? ");
+    year = getInteger( action_data, "What year were they born? ");
+    action_data.getOS() << hero << " was born in " << year << "." << std::endl ;
     return year;
+}
+
+// assignment 5
+std::string getChoice( ActionData& action_data ) {
+    return getString( action_data, "Choice? ");
+}
+void commentLine( ActionData& action_data ) {
+    char *buffer[1];
+    do {
+        action_data.getIS().read( buffer[0], sizeof(buffer[0]));
+     } while( action_data.getIS().good() && (strcmp(buffer[0], "\n") != 0));
+}
+void quit( ActionData& action_data ) {
+    action_data.setDone();
 }

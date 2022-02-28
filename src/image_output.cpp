@@ -4,19 +4,18 @@
 #include "image_menu.h"
 
 
-void drawAsciiImage( std::istream& is, std::ostream& os, const Image& image ) {
+void drawAsciiImage( ActionData& action_data ) {
 	int row;
 	int col;
 	int chan;
 	double str; //strength
 	std::string newLine;
-	(void) is;
-	for(row = 0; row < image.getHeight(); row++) {
+	for(row = 0; row < action_data.getOutputImage().getHeight(); row++) {
 		newLine = "";
-		for(col = 0; col < image.getWidth(); col++) {
+		for(col = 0; col < action_data.getOutputImage().getWidth(); col++) {
 			str = 0;
 			for(chan = 0; chan <= 2; chan++) {
-				str = str + image.getChannel(row, col, chan);
+				str = str + action_data.getOutputImage().getChannel(row, col, chan);
 				};
 			str = str / 765.0;
 			if(str >= 1.0) {newLine.append("@");
@@ -33,13 +32,27 @@ void drawAsciiImage( std::istream& is, std::ostream& os, const Image& image ) {
 			}
 		};
 	
-	os << newLine << std::endl ;
+	action_data.getOS() << newLine << std::endl ;
     };
 }
 
-void writeUserImage( std::istream& is, std::ostream& os, const PPM& p ) {
-    std::string name = getString(is, os, "Output filename? ");
+void writeUserImage( ActionData& action_data ) {
+    std::string name = getString( action_data , "Output filename? ");
     std::ofstream fs;
     fs.open(name, std::fstream::binary);
-    p.writeStream(fs);
+    action_data.getOutputImage().writeStream(fs);
+}
+
+void copyImage( ActionData& action_data ) {
+    action_data.getOutputImage() = action_data.getInputImage1();
+}
+
+void readUserImage1( ActionData& action_data ) {
+    std::string name;
+    std::ifstream fs;
+    fs.open(name, std::fstream::in);
+    if( !fs.good() ) {
+        std::cout << name << " failed to open." << std::endl;
+    }
+    action_data.getInputImage1().readStream(fs);
 }

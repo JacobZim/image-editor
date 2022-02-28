@@ -60,7 +60,7 @@ void PPM::readStream( std::istream& is ) {
     char *PPMdata = new char [1]; 
     is.read(PPMdata, 1); //get rid of newline character
 
-    /*
+    /* old code
     current = is.tellg(); //mark current location
     is.seekg(0, is.end); //mark end of file
     end = is.tellg();
@@ -75,7 +75,7 @@ void PPM::readStream( std::istream& is ) {
     for(int i = 0; i < h; i++) {
         for( int j = 0; j < w; j++) {
             for( int k = 0; k <= 2; k++) {
-                /*
+                /* old code
                 //is.read((char*) buffer, sizeof(buffer[0]) ); //read one byte of data
                 //int a = ((i * w * 3) + (j * 3)) + k ;
                 */
