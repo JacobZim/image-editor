@@ -28,6 +28,9 @@ void setMaxColorValue( ActionData& action_data );
 void setChannel( ActionData& action_data );
 void setPixel( ActionData& action_data );
 void clearAll( ActionData& action_data );
+//assignment7
+void drawCircle(ActionData& action_data);
+void drawBox(ActionData& action_data);
 
 // image_output.cpp
 void drawAsciiImage( ActionData& action_data );
@@ -59,6 +62,11 @@ void plus( ActionData& action_data );
 void minus( ActionData& action_data );
 void times( ActionData& action_data );
 void divide( ActionData& action_data );
+//assignemnt7
+void grayFromRed(ActionData& action_data);
+void grayFromGreen(ActionData& action_data);
+void grayFromBlue(ActionData& action_data);
+void grayFromLinearColorimetric(ActionData& action_data);
 
 
 

@@ -1,7 +1,7 @@
 #include <iostream>
 #include "image_menu.h"
 #include <string>
-
+#include <cmath>
 
 
 void diagonalQuadPattern( ActionData& action_data ) {
@@ -186,6 +186,56 @@ void simpleSquaresPattern( ActionData& action_data ) {
     for(row = size; row < size; row++) {
         for( col = 0; col < size; col++) {
             action_data.getInputImage1().setChannel(row, col, 2, 255);
+        }
+    }
+}
+
+
+void drawCircle(ActionData& action_data) {
+    int cenRow, cenCol, r, g, b, delRow, delCol;
+    double distance, rad;
+
+    cenRow = getInteger(action_data, "Center Row? ");
+    cenCol = getDouble(action_data, "Center Column? ");
+    rad = getInteger(action_data, "Radius? ");
+    r = getInteger(action_data, "Red? ");
+    g = getInteger(action_data, "Green? ");
+    b = getInteger(action_data, "Blue? ");
+
+    int width = action_data.getInputImage1().getWidth();
+    int height = action_data.getInputImage1().getHeight();
+
+    for( int i=0; i < height; i++ ) {
+        for( int j=0; j < width; j++ ) {
+            delRow = i - cenRow;
+            delCol = j - cenCol;
+            distance = std::sqrt((delRow * delRow) + (delCol * delCol));
+            if(distance <= rad) {
+                action_data.getInputImage1().setPixel(i, j, r,g,b);
+            }
+        }
+    }
+}
+void drawBox(ActionData& action_data) {
+    int tRow, bRow, lCol, rCol, r, g, b;
+    int width = action_data.getInputImage1().getWidth();
+    int height = action_data.getInputImage1().getHeight();
+
+    tRow = getInteger(action_data, "Top Row? ");
+    lCol = getInteger(action_data, "Left Column? ");
+    bRow = getInteger(action_data, "Bottom Row? ");
+    rCol = getInteger(action_data, "Right Column? ");
+
+    r = getInteger(action_data, "Red? ");
+    g = getInteger(action_data, "Green? ");
+    b = getInteger(action_data, "Blue? ");
+
+
+    for( int row=0; row < height; row++ ) {
+        for( int col=0; col < width; col++ ) {
+            if((row >= tRow) && (row <= bRow) && (col <= rCol) && (col >= lCol)) {
+                action_data.getInputImage1().setPixel(row, col, r,g,b);
+            }
         }
     }
 }

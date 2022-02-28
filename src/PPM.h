@@ -31,6 +31,13 @@ public:
     PPM operator-( const PPM& rhs ) const;
     PPM operator*( const double& rhs ) const;
     PPM operator/( const double& rhs ) const;
+    //assignment7 image_filters
+    void grayFromChannel( PPM& dst, const int& src_channel ) const;
+    void grayFromRed( PPM& dst ) const;
+    void grayFromGreen( PPM& dst ) const;
+    void grayFromBlue( PPM& dst ) const;
+    double linearColorimetricPixelValue( const int& row, const int& column ) const;
+    void grayFromLinearColorimetric( PPM& dst ) const;
 protected:
     int mMaxColorValue;
 private:

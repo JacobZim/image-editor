@@ -81,6 +81,13 @@ void configureMenu( MenuData& menu_data ) {
     ActionFunctionType dividee = &divide;
     ActionFunctionType divideE = &divideEquals;
 
+    ActionFunctionType redg = &grayFromRed;
+    ActionFunctionType greeng = &grayFromGreen;
+    ActionFunctionType blueg = &grayFromBlue;
+    ActionFunctionType ling = &grayFromLinearColorimetric;
+    ActionFunctionType circ = &drawCircle;
+    ActionFunctionType boxe = &drawBox;
+
     menu_data.addAction("draw-ascii", drawAsci, "Write output image to terminal as ASCII art.");
     menu_data.addAction("write", write, "Write output image to file.");
     menu_data.addAction("copy", cpyImage, "Copy input image 1 to output image.");
@@ -102,6 +109,13 @@ void configureMenu( MenuData& menu_data ) {
     menu_data.addAction("*=", timesE, "Set input image 1 by multiplying by a number.");
     menu_data.addAction("/", dividee, "Set output image from input image 1 divided by a number.");
     menu_data.addAction("/=", divideE, "Set input image 1 by dividing by a number.");
+
+    menu_data.addAction("red-gray", redg, "Set output image by grayscale from red on input image 1.");
+    menu_data.addAction("green-gray", greeng, "Set output image by grayscale from green on input image 1.");
+    menu_data.addAction("blue-gray", blueg, "Set output image by grayscale from blue on input image 1.");
+    menu_data.addAction("linear-gray", ling, "Set output image by linear colorimetric grayscale on input image 1.");
+    menu_data.addAction("circle", circ, "Draw a circle shape in input image 1.");
+    menu_data.addAction("box", boxe, "Draw a box shape in input image 1.");
 }
 
 int imageMenu( std::istream& is, std::ostream& os ) {

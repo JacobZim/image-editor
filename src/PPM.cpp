@@ -274,3 +274,56 @@ PPM PPM::operator/( const double& rhs ) const {
     }
     return result;
 }
+
+
+void PPM::grayFromChannel( PPM& dst, const int& src_channel ) const {
+    dst.setHeight(this->getHeight());
+    dst.setWidth(this->getWidth());
+    dst.setMaxColorValue(this->getMaxColorValue());
+    int w, h, v;
+    w = this->getWidth();
+    h = this->getHeight();
+    for( int i=0; i<h; i++) {
+        for( int j=0; j<w; j++) {
+            v = this->getChannel(i,j,src_channel);
+            dst.setPixel(i, j, v, v, v);
+        }
+    }
+}
+void PPM::grayFromRed( PPM& dst ) const {
+    this->grayFromChannel(dst, 0);
+}
+void PPM::grayFromGreen( PPM& dst ) const {
+    this->grayFromChannel(dst, 1);
+}
+void PPM::grayFromBlue( PPM& dst ) const {
+    this->grayFromChannel(dst, 2);
+}
+double PPM::linearColorimetricPixelValue( const int& row, const int& column ) const {
+    
+    int r, g, b;
+    double lcpv;
+    
+    r = this->getChannel(row, column , 0);
+    g = this->getChannel(row,column ,1);
+    b = this->getChannel(row,column ,2);
+    lcpv = (0.2126 * r) + (0.7152 * g) + (0.0722 * b);
+    return lcpv;
+}
+void PPM::grayFromLinearColorimetric( PPM& dst ) const {
+    dst.setHeight(this->getHeight());
+    dst.setWidth(this->getWidth());
+    dst.setMaxColorValue(this->getMaxColorValue());
+
+    int w, h;
+    w = this->getWidth();
+    h = this->getHeight();
+
+    for( int i=0; i<h; i++) {
+        for( int j=0; j<w; j++) {
+            for(int c=0; c< 3; c++ ) {
+                dst.setChannel(i, j, c, this->linearColorimetricPixelValue(i,j));
+            }
+        }
+    }
+}
