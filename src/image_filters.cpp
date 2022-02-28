@@ -47,3 +47,6 @@ void grayFromLinearColorimetric(ActionData& action_data) {
 void orangeFilter(ActionData& action_data) {
     action_data.getInputImage1().orangeFilter(action_data.getOutputImage());
 }
+void timesEqualsPPM(ActionData& action_data) {
+    action_data.getInputImage1() *= action_data.getInputImage2();
+}

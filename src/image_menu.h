@@ -71,6 +71,7 @@ void grayFromBlue(ActionData& action_data);
 void grayFromLinearColorimetric(ActionData& action_data);
 //exam2
 void orangeFilter(ActionData& action_data);
+void timesEqualsPPM(ActionData& action_data);
 
 
 

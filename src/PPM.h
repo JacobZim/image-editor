@@ -40,6 +40,7 @@ public:
     void grayFromLinearColorimetric( PPM& dst ) const;
     //exam2
     void orangeFilter(PPM& dst) const;
+    PPM& operator*=( const PPM& rhs );
 protected:
     int mMaxColorValue;
 private:

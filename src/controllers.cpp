@@ -90,6 +90,7 @@ void configureMenu( MenuData& menu_data ) {
 
     ActionFunctionType square = &drawSquare;
     ActionFunctionType orange = &orangeFilter;
+    ActionFunctionType timesEp = &timesEqualsPPM;
 
     menu_data.addAction("draw-ascii", drawAsci, "Write output image to terminal as ASCII art.");
     menu_data.addAction("write", write, "Write output image to file.");
@@ -122,6 +123,7 @@ void configureMenu( MenuData& menu_data ) {
 
     menu_data.addAction("square", square, "Draw a square shape in input image 1.");
     menu_data.addAction("orange", orange, "Set output image from orange filter on input image 1.");
+    menu_data.addAction("*=-ppm", timesEp, "Set input image 1 by multiplying by input image 2.");
 }
 
 int imageMenu( std::istream& is, std::ostream& os ) {

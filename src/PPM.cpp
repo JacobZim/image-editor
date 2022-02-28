@@ -275,6 +275,27 @@ PPM PPM::operator/( const double& rhs ) const {
     return result;
 }
 
+PPM& PPM::operator*=( const PPM& rhs ) {
+    int w, h, s, r, v;
+    w = this->getWidth();
+    h = this->getHeight();
+    for(int i=0; i < h; i++ ) {
+        for(int j=0; j < w; j++ ) {
+            for(int c=0; c < 3; c++ ) {
+                s = this->getChannel(i,j,c);
+                r = rhs.getChannel(i,j,c);
+                v = rhs.getMaxColorValue();
+
+                s *= r;
+                s /= v;
+                
+                this->setChannel(i,j,c,s);
+            }
+        }
+    }
+    return *this;
+}
+
 
 void PPM::grayFromChannel( PPM& dst, const int& src_channel ) const {
     dst.setHeight(this->getHeight());
