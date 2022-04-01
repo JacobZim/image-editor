@@ -78,6 +78,10 @@ void grayFromLinearColorimetric(ActionData& action_data);
 void orangeFilter(ActionData& action_data);
 void timesEqualsPPM(ActionData& action_data);
 
+//colorTable
+void configureMenu(MenuData& menu_data);
 
+//manhattan numbers exam 3
+void setManhattanNumbers(ActionData& action_data);
 
 #endif /*_IMAGE_MENU_H_*/

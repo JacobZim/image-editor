@@ -96,6 +96,8 @@ void configureMenu( MenuData& menu_data ) {
     ActionFunctionType sG = &setGrid;
     ActionFunctionType aG = &applyGrid;
 
+    ActionFunctionType manh = &setManhattanNumbers;
+
     menu_data.addAction("draw-ascii", drawAsci, "Write output image to terminal as ASCII art.");
     menu_data.addAction("write", write, "Write output image to file.");
     menu_data.addAction("copy", cpyImage, "Copy input image 1 to output image.");
@@ -132,6 +134,8 @@ void configureMenu( MenuData& menu_data ) {
     menu_data.addAction("grid", cG, "Configure the grid.");
     menu_data.addAction("grid-set", sG, "Set a single value in the grid.");
     menu_data.addAction("grid-apply", aG, "Use the grid values to set colors in the output image.");
+
+    menu_data.addAction("manhattan", manh, "Choose to make a Manhattan distance grid.");
 }
 
 int imageMenu( std::istream& is, std::ostream& os ) {
@@ -147,3 +151,6 @@ int imageMenu( std::istream& is, std::ostream& os ) {
     return 0;
 }
 
+void setManhattanNumbers(ActionData& action_data) {
+    action_data.setGrid(new ManhattanNumbers);
+}

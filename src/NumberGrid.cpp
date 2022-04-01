@@ -1,5 +1,5 @@
 #include "NumberGrid.h"
-
+#include <cmath>
 
 
 NumberGrid::NumberGrid( ) {
@@ -104,3 +104,21 @@ void NumberGrid::setPPM( PPM& ppm ) const {
         }
     }
 }
+
+
+ManhattanNumbers::ManhattanNumbers( ) {
+    this->mHeight = 600;
+    this->mWidth = 800;
+}
+ManhattanNumbers::ManhattanNumbers( const int& height, const int& width ) {
+    this->mHeight = height;
+    this->mWidth = width;
+}
+ManhattanNumbers::~ManhattanNumbers() {}
+int ManhattanNumbers::calculateNumber( const int& row, const int& column) const {
+    int dx, dy, total;
+    dx = std::abs((mWidth / 2) - column);
+    dy = std::abs((mHeight / 2) - row);
+    total = dx + dy;
+    return total;
+ }
