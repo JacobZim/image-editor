@@ -19,7 +19,7 @@ NumberGrid::NumberGrid( const int& height, const int& width ) {
     this->mGrid = cpy;
 }
 
-NumberGrid::~NumberGrid() {};
+NumberGrid::~NumberGrid() {}
 
 int NumberGrid::getHeight( ) const {
     return this->mHeight;
