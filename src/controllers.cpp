@@ -92,6 +92,10 @@ void configureMenu( MenuData& menu_data ) {
     ActionFunctionType orange = &orangeFilter;
     ActionFunctionType timesEp = &timesEqualsPPM;
 
+    ActionFunctionType cG = &configureGrid;
+    ActionFunctionType sG = &setGrid;
+    ActionFunctionType aG = &applyGrid;
+
     menu_data.addAction("draw-ascii", drawAsci, "Write output image to terminal as ASCII art.");
     menu_data.addAction("write", write, "Write output image to file.");
     menu_data.addAction("copy", cpyImage, "Copy input image 1 to output image.");
@@ -124,10 +128,15 @@ void configureMenu( MenuData& menu_data ) {
     menu_data.addAction("square", square, "Draw a square shape in input image 1.");
     menu_data.addAction("orange", orange, "Set output image from orange filter on input image 1.");
     menu_data.addAction("*=-ppm", timesEp, "Set input image 1 by multiplying by input image 2.");
+
+    menu_data.addAction("grid", cG, "Configure the grid.");
+    menu_data.addAction("grid-set", sG, "Set a single value in the grid.");
+    menu_data.addAction("grid-apply", aG, "Use the grid values to set colors in the output image.");
 }
 
 int imageMenu( std::istream& is, std::ostream& os ) {
     ActionData action_data(is, os);
+    action_data.setGrid( new NumberGrid );
     MenuData menu_data;
     configureMenu( menu_data );
     std::string choice;

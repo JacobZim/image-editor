@@ -261,3 +261,24 @@ void drawSquare(ActionData& action_data) {
         }
     }
 }
+
+
+void configureGrid(ActionData& action_data) {
+    int height, width, mcv;
+    height = getInteger(action_data, "Grid Height? ");
+    width = getInteger(action_data, "Grid Width? ");
+    mcv = getInteger( action_data, "Grid Max Value? ");
+    action_data.getGrid().setGridSize(height, width);
+    action_data.getGrid().setMaxNumber(mcv);
+}
+
+void setGrid(ActionData& action_data) {
+    int row, col, val;
+    row = getInteger(action_data, "Grid Row? ");
+    col = getInteger(action_data, "Grid Column? ");
+    val = getInteger( action_data, "Grid Value? ");
+    action_data.getGrid().setNumber(row, col, val);
+}
+void applyGrid(ActionData& action_data) {
+    action_data.getGrid().setPPM(action_data.getOutputImage());
+}

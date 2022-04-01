@@ -3,7 +3,13 @@
 
 
 ActionData::ActionData(std::istream& is, std::ostream& os):
-    mIs(is), mOs(os), mHasQuit(false) {
+    mIs(is), mOs(os), mHasQuit(false), mNumberGrid(0) {
+}
+ActionData::~ActionData() {
+    if (mNumberGrid != 0) {
+        delete mNumberGrid;
+        mNumberGrid = 0;
+    }
 }
 std::istream& ActionData::getIS() {
     return mIs;
@@ -25,4 +31,13 @@ bool ActionData::getDone() const {
 }
 void ActionData::setDone() {
     mHasQuit = true;
+}
+NumberGrid& ActionData::getGrid() {
+    return *mNumberGrid;
+}
+void ActionData::setGrid(NumberGrid *grid) {
+    if (mNumberGrid != 0) {
+        delete mNumberGrid;
+    }
+    mNumberGrid = grid;
 }

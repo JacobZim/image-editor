@@ -2,10 +2,12 @@
 #define _ACTIONDATA_H_
 #include <iostream>
 #include "PPM.h"
+#include "NumberGrid.h"
 
 class ActionData {
 public:
     ActionData( std::istream& is, std::ostream& os );
+    ~ActionData();
     std::istream& getIS();
     std::ostream& getOS();
     PPM& getInputImage1();
@@ -13,6 +15,8 @@ public:
     PPM& getOutputImage();
     bool getDone() const;
     void setDone();
+    NumberGrid& getGrid();
+    void setGrid(NumberGrid *grid);
 protected:
     std::istream& mIs;
     std::ostream& mOs;
@@ -20,6 +24,7 @@ protected:
     PPM mInputImageTwo;
     PPM mOutputImage;
     bool mHasQuit;
+    NumberGrid *mNumberGrid;
 private:
 };
 

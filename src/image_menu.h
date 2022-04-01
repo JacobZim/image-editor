@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include "MenuData.h"
+#include "NumberGrid.h"
 
 //user_io.cpp
 std::string getString( ActionData& action_data, const std::string& prompt );
@@ -33,6 +34,10 @@ void drawCircle(ActionData& action_data);
 void drawBox(ActionData& action_data);
 //exam 2
 void drawSquare(ActionData& action_data);
+//assignment 8
+void configureGrid(ActionData& action_data);
+void setGrid(ActionData& action_data);
+void applyGrid(ActionData& action_data);
 
 // image_output.cpp
 void drawAsciiImage( ActionData& action_data );
