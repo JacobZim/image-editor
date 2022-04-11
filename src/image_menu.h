@@ -38,6 +38,12 @@ void drawSquare(ActionData& action_data);
 void configureGrid(ActionData& action_data);
 void setGrid(ActionData& action_data);
 void applyGrid(ActionData& action_data);
+//assignment 9
+void setColorTableSize(ActionData& action_data);
+void setColor(ActionData& action_data);
+void setRandomColor(ActionData& action_data);
+void setColorGradient(ActionData& action_data);
+void applyGridColorTable(ActionData& action_data);
 
 // image_output.cpp
 void drawAsciiImage( ActionData& action_data );

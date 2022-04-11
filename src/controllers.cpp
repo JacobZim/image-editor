@@ -98,6 +98,12 @@ void configureMenu( MenuData& menu_data ) {
 
     ActionFunctionType manh = &setManhattanNumbers;
 
+    ActionFunctionType sCTS = &setColorTableSize;
+    ActionFunctionType sC = &setColor;
+    ActionFunctionType sRC = &setRandomColor;
+    ActionFunctionType sCG = &setColorGradient;
+    ActionFunctionType aGCT = &applyGridColorTable;
+
     menu_data.addAction("draw-ascii", drawAsci, "Write output image to terminal as ASCII art.");
     menu_data.addAction("write", write, "Write output image to file.");
     menu_data.addAction("copy", cpyImage, "Copy input image 1 to output image.");
@@ -136,6 +142,13 @@ void configureMenu( MenuData& menu_data ) {
     menu_data.addAction("grid-apply", aG, "Use the grid values to set colors in the output image.");
 
     menu_data.addAction("manhattan", manh, "Choose to make a Manhattan distance grid.");
+
+    menu_data.addAction("set-color-table-size", sCTS, "Change the number of slots in the color table.");
+    menu_data.addAction("set-color", sC, "Set the RGB values for one slot in the color table.");
+    menu_data.addAction("set-random-color", sRC, "Randomly set the RGB values for one slot in the color table.");
+    menu_data.addAction("set-color-gradient", sCG, "Smoothly set the RGB values for a range of slots in the color table.");
+    menu_data.addAction("grid-apply-color-table", aGCT, "Use the grid values to set colors in the output image using the color table.");
+    
 }
 
 int imageMenu( std::istream& is, std::ostream& os ) {

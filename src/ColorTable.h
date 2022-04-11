@@ -1,4 +1,4 @@
-/*
+
 #ifndef _COLOR_TABLE_H_
 #define _COLOR_TABLE_H_
 #include <vector>
@@ -18,6 +18,8 @@ public:
     void invert( const int& max_color_value );
     bool operator==( const Color& rhs ) const;
     //std::ostream& operator<<( std::ostream& os, const Color& color );
+    //my own helper function
+    void setAllChannels( const int& red, const int& green, const int& blue );
 protected:
     int mRed;
     int mGreen;
@@ -39,7 +41,7 @@ public:
     void insertGradient( const Color& color1, const Color& color2, const int& position1, const int& position2 );
     int getMaxChannelValue( ) const;
 protected:
-    std::vector<int> mVector;
+    std::vector<Color> mVector;
 private:
 };
 
@@ -52,4 +54,3 @@ private:
 
 
 #endif
-*/

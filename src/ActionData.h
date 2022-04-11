@@ -17,6 +17,7 @@ public:
     void setDone();
     NumberGrid& getGrid();
     void setGrid(NumberGrid *grid);
+    ColorTable& getTable();
 protected:
     std::istream& mIs;
     std::ostream& mOs;
@@ -25,6 +26,7 @@ protected:
     PPM mOutputImage;
     bool mHasQuit;
     NumberGrid *mNumberGrid;
+    ColorTable mColors;
 private:
 };
 

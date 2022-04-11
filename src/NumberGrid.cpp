@@ -2,6 +2,7 @@
 #include <cmath>
 
 
+
 NumberGrid::NumberGrid( ) {
     this->mHeight = 300;
     this->mWidth = 400;
@@ -101,6 +102,27 @@ void NumberGrid::setPPM( PPM& ppm ) const {
                 ppm.setPixel(j, i, 63, 31, 63);
             } 
             
+        }
+    }
+}
+void NumberGrid::setPPM( PPM& ppm, const ColorTable& colors ) const {
+    if (colors.getNumberOfColors() < 2) {
+        return;
+    }
+    ppm.setHeight(this->getHeight());
+    ppm.setWidth(this->getWidth());
+    ppm.setMaxColorValue(colors.getMaxChannelValue());
+    for (int i=0; i<ppm.getWidth(); i++) {
+        for (int y=0; i<ppm.getHeight(); y++) {
+            int j = this->getNumber(i, y);
+
+            Color c;
+            if (j == this->getMaxNumber()) {
+                c = colors[colors.getNumberOfColors()-1];
+            } else {
+                c = colors[j % colors.getNumberOfColors()];
+            }
+            ppm.setPixel(i, y, c.getRed(), c.getGreen(), c.getBlue());
         }
     }
 }
