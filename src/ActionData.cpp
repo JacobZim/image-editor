@@ -6,7 +6,7 @@ ActionData::ActionData(std::istream& is, std::ostream& os):
     mIs(is), mOs(os), mHasQuit(false), mNumberGrid(0), mColors(16) {
         Color x(0, 255, 0);
         Color y(255, 0, 255);
-        mColors.insertGradient(x, y, 1, 16);
+        mColors.insertGradient(x, y, 0, 15);
 }
 ActionData::~ActionData() {
     if (mNumberGrid != 0) {

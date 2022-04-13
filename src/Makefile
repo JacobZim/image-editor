@@ -3,6 +3,7 @@
 CXXFLAGS := -std=c++11 -Werror -Wall -Wpedantic -Wextra 
 OBJECTS := Image.o image_drawing.o image_output.o PPM.o user_io.o controllers.o MenuData.o ActionData.o image_filters.o NumberGrid.o ColorTable.o
 HEADERFILE := NumberGrid.h
+LDFLAGS := -lpthread #add into link commands for executables for multithreading
 
 all: hello questions_3 ascii_image image_file simple_squares_ascii hero ppm_menu 
 

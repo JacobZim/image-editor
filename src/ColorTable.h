@@ -17,15 +17,16 @@ public:
     void setChannel( const int& channel, const int& value );
     void invert( const int& max_color_value );
     bool operator==( const Color& rhs ) const;
-    //std::ostream& operator<<( std::ostream& os, const Color& color );
-    //my own helper function
+    //my own helper functions
     void setAllChannels( const int& red, const int& green, const int& blue );
+    void setError();
 protected:
     int mRed;
     int mGreen;
     int mBlue;
 private:
 };
+std::ostream& operator<<( std::ostream& os, const Color& color );
 
 
 class ColorTable {

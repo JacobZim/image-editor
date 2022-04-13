@@ -113,8 +113,8 @@ void NumberGrid::setPPM( PPM& ppm, const ColorTable& colors ) const {
     ppm.setWidth(this->getWidth());
     ppm.setMaxColorValue(colors.getMaxChannelValue());
     for (int i=0; i<ppm.getWidth(); i++) {
-        for (int y=0; i<ppm.getHeight(); y++) {
-            int j = this->getNumber(i, y);
+        for (int y=0; y<ppm.getHeight(); y++) {
+            int j = this->getNumber(y, i);
 
             Color c;
             if (j == this->getMaxNumber()) {
@@ -122,7 +122,7 @@ void NumberGrid::setPPM( PPM& ppm, const ColorTable& colors ) const {
             } else {
                 c = colors[j % colors.getNumberOfColors()];
             }
-            ppm.setPixel(i, y, c.getRed(), c.getGreen(), c.getBlue());
+            ppm.setPixel(y, i, c.getRed(), c.getGreen(), c.getBlue());
         }
     }
 }
