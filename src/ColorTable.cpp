@@ -1,6 +1,6 @@
 
 #include "ColorTable.h"
-#include <iostream>
+
 
 
 Color::Color(): mRed(0), mGreen(0), mBlue(0) {}

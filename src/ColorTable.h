@@ -2,6 +2,7 @@
 #ifndef _COLOR_TABLE_H_
 #define _COLOR_TABLE_H_
 #include <vector>
+#include <iostream>
 
 class Color {
 public:
