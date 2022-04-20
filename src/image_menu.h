@@ -4,7 +4,8 @@
 #include <iostream>
 #include <string>
 #include "MenuData.h"
-#include "NumberGrid.h"
+//#include "NumberGrid.h"
+// #include "ComplexFractal.h"
 
 //user_io.cpp
 std::string getString( ActionData& action_data, const std::string& prompt );
@@ -44,6 +45,9 @@ void setColor(ActionData& action_data);
 void setRandomColor(ActionData& action_data);
 void setColorGradient(ActionData& action_data);
 void applyGridColorTable(ActionData& action_data);
+//assignment 10
+void setFractalPlaneSize(ActionData& action_data);
+void calculateFractal(ActionData& action_data);
 
 // image_output.cpp
 void drawAsciiImage( ActionData& action_data );

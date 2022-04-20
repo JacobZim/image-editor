@@ -126,7 +126,13 @@ void NumberGrid::setPPM( PPM& ppm, const ColorTable& colors ) const {
         }
     }
 }
-
+void NumberGrid::calculateAllNumbers() {
+    for (int i=0; i< this->mHeight; i++) {
+        for (int j=0; j< this->mWidth; j++) {
+            setNumber(i, j, calculateNumber(i, j));
+        }
+    }
+}
 
 ManhattanNumbers::ManhattanNumbers( ) {
     this->mHeight = 600;

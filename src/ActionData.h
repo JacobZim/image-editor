@@ -2,7 +2,7 @@
 #define _ACTIONDATA_H_
 #include <iostream>
 #include "PPM.h"
-#include "NumberGrid.h"
+#include "ComplexFractal.h"
 
 class ActionData {
 public:
