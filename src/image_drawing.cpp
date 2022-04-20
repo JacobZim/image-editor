@@ -327,7 +327,7 @@ void setFractalPlaneSize(ActionData& action_data) {
     double max_y = getDouble( action_data, "Max Y? " );
     ptr->setPlaneSize( min_x, max_x, min_y, max_y );
   } else {
-    action_data.getOS() << "Not a ComplexFractal object.  Can't set plane size." << std::endl;
+    action_data.getOS() << "Not a ComplexFractal object. Can't set plane size." << std::endl;
   }
 }
 void calculateFractal(ActionData& action_data) {
