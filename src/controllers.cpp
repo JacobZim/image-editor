@@ -156,12 +156,16 @@ void configureMenu( MenuData& menu_data ) {
     ActionFunctionType sCF = &setComplexFractal;
     ActionFunctionType sJF = &setJuliaFractal;
 
+    ActionFunctionType sMF = &setMandelbrotFractal;
+
     menu_data.addAction("fractal-plane-size", sFPS, "Set the dimensions of the grid in the complex plane.");
     menu_data.addAction("fractal-calculate", cF, "Calculate the escape values for the fractal.");
 
     menu_data.addAction("julia-parameters", sJP, "Set the parameters of the Julia Set function.");
     menu_data.addAction("complex-fractal", sCF, "Choose to make a complex plane.");
     menu_data.addAction("julia", sJF, "Choose to make a Julia set.");
+
+    menu_data.addAction("mandelbrot", sMF, "Choose to make a Mandelbrot set.");
     
 }
 
@@ -188,5 +192,9 @@ void setComplexFractal( ActionData& action_data ) {
 }
 void setJuliaFractal( ActionData& action_data ) {
     JuliaSet *ptr = new JuliaSet;
+    action_data.setGrid(ptr);
+}
+void setMandelbrotFractal( ActionData& action_data ) {
+    MandelbrotSet *ptr = new MandelbrotSet;
     action_data.setGrid(ptr);
 }

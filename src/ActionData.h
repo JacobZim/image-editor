@@ -3,6 +3,7 @@
 #include <iostream>
 #include "PPM.h"
 #include "JuliaSet.h"
+#include "MandelbrotSet.h"
 
 class ActionData {
 public:

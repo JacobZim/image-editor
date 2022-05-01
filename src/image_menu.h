@@ -74,6 +74,8 @@ int imageMenu(std::istream& is, std::ostream& os);
 //assignment 11
 void setComplexFractal( ActionData& action_data );
 void setJuliaFractal( ActionData& action_data );
+//assignment 12
+void setMandelbrotFractal( ActionData& action_data );
 
 //image_filters.cpp
 void plusEquals( ActionData& action_data );
