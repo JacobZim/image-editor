@@ -341,6 +341,6 @@ void setJuliaParameters(ActionData& action_data) {
     double b = getDouble( action_data, "Parameter b? " );
     ptr->setParameters( a, b);
   } else {
-    action_data.getOS() << "Not a JuliaSet object. Can't set plane size." << std::endl;
+    action_data.getOS() << "Not a JuliaSet object. Can't set parameters." << std::endl;
   }
 }
