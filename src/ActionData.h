@@ -2,7 +2,7 @@
 #define _ACTIONDATA_H_
 #include <iostream>
 #include "PPM.h"
-#include "ComplexFractal.h"
+#include "JuliaSet.h"
 
 class ActionData {
 public:

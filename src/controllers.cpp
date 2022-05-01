@@ -152,8 +152,16 @@ void configureMenu( MenuData& menu_data ) {
     ActionFunctionType sFPS = &setFractalPlaneSize;
     ActionFunctionType cF = &calculateFractal;
 
+    ActionFunctionType sJP = &setJuliaParameters;
+    ActionFunctionType sCF = &setComplexFractal;
+    ActionFunctionType sJF = &setJuliaFractal;
+
     menu_data.addAction("fractal-plane-size", sFPS, "Set the dimensions of the grid in the complex plane.");
     menu_data.addAction("fractal-calculate", cF, "Calculate the escape values for the fractal.");
+
+    menu_data.addAction("julia-parameters", sJP, "Set the parameters of the Julia Set function.");
+    menu_data.addAction("complex-fractal", sCF, "Choose to make a complex plane.");
+    menu_data.addAction("julia", sJF, "Choose to make a Julia set.");
     
 }
 
@@ -172,4 +180,13 @@ int imageMenu( std::istream& is, std::ostream& os ) {
 
 void setManhattanNumbers(ActionData& action_data) {
     action_data.setGrid(new ManhattanNumbers);
+}
+
+void setComplexFractal( ActionData& action_data ) {
+    ComplexFractal *ptr = new ComplexFractal;
+    action_data.setGrid(ptr);
+}
+void setJuliaFractal( ActionData& action_data ) {
+    JuliaSet *ptr = new JuliaSet;
+    action_data.setGrid(ptr);
 }

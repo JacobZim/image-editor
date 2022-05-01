@@ -1,7 +1,7 @@
 
 
 CXXFLAGS := -std=c++11 -Werror -Wall -Wpedantic -Wextra 
-OBJECTS := Image.o image_drawing.o image_output.o PPM.o user_io.o controllers.o MenuData.o ActionData.o image_filters.o NumberGrid.o ColorTable.o ComplexFractal.o
+OBJECTS := Image.o image_drawing.o image_output.o PPM.o user_io.o controllers.o MenuData.o ActionData.o image_filters.o NumberGrid.o ColorTable.o ComplexFractal.o JuliaSet.o
 HEADERFILE := NumberGrid.h
 LDFLAGS := -lpthread #add into link commands for executables for multithreading
 
@@ -98,6 +98,9 @@ ColorTable.o : ColorTable.cpp ColorTable.h
 	g++ $(CXXFLAGS) -c -o $@ $<
 
 ComplexFractal.o : ComplexFractal.cpp ComplexFractal.h 
+	g++ $(CXXFLAGS) -c -o $@ $<
+
+JuliaSet.o : JuliaSet.cpp JuliaSet.h 
 	g++ $(CXXFLAGS) -c -o $@ $<
 
 clean:

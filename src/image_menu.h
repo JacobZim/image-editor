@@ -48,6 +48,8 @@ void applyGridColorTable(ActionData& action_data);
 //assignment 10
 void setFractalPlaneSize(ActionData& action_data);
 void calculateFractal(ActionData& action_data);
+//assignment 11
+void setJuliaParameters(ActionData& action_data);
 
 // image_output.cpp
 void drawAsciiImage( ActionData& action_data );
@@ -69,6 +71,9 @@ void showMenu( MenuData& menu_data, ActionData& action_data );
 void takeAction(const std::string& choice, MenuData& menu_data, ActionData& action_data);
 void configureMenu( MenuData& menu_data );
 int imageMenu(std::istream& is, std::ostream& os);
+//assignment 11
+void setComplexFractal( ActionData& action_data );
+void setJuliaFractal( ActionData& action_data );
 
 //image_filters.cpp
 void plusEquals( ActionData& action_data );

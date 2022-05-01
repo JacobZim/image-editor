@@ -333,3 +333,14 @@ void setFractalPlaneSize(ActionData& action_data) {
 void calculateFractal(ActionData& action_data) {
     action_data.getGrid().calculateAllNumbers();
 }
+
+void setJuliaParameters(ActionData& action_data) {
+    JuliaSet *ptr = dynamic_cast< JuliaSet* >( &action_data.getGrid() );
+  if( ptr != 0 ) {
+    double a = getDouble( action_data, "Parameter a? " );
+    double b = getDouble( action_data, "Parameter b? " );
+    ptr->setParameters( a, b);
+  } else {
+    action_data.getOS() << "Not a JuliaSet object. Can't set plane size." << std::endl;
+  }
+}
