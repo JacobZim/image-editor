@@ -93,6 +93,18 @@ void keyboard_cb(unsigned char c, int x, int y) {
       g_app_data->decreaseMaxNumber();
       g_app_data->createFractal();
       break;
+  case 'a':
+      g_app_data->toggleAntiAlias();
+      g_app_data->createFractal();
+      break;
+  case 's':
+      g_app_data->decreaseAntiAliasReductionCount();
+      g_app_data->createFractal();
+      break;
+  case 'S':
+      g_app_data->increaseAntiAliasReductionCount();
+      g_app_data->createFractal();
+      break;
   
     
   default:

@@ -4,7 +4,8 @@
 
 GlutApp::GlutApp(int height, int width)
   : mHeight(height), mWidth(width), mActionData(mInputStream, mOutputStream), mMinX(-2.0), mMaxX(2.0), mMinY(-2.0), mMaxY(2.0),
-  mInteractionMode(IM_FRACTAL), mFractalMode(M_MANDELBROT), mMaxNumber(200), mColor1(255, 255, 25), mColor2(255, 25, 255), mNumColor(32) {
+  mInteractionMode(IM_FRACTAL), mFractalMode(M_MANDELBROT), mMaxNumber(200), mColor1(255, 255, 25), mColor2(255, 25, 255), mNumColor(32),
+  mAntiAliasReductionCount(2), mAntiAlias(false) {
   configureMenu(mMenuData);
   mActionData.setGrid(new ComplexFractal);
   setColorTable();
@@ -138,7 +139,14 @@ void GlutApp::configureGrid(int max) {
     mInputStream.clear();
     mOutputStream.str("");
     mInputStream.str("");
-    {
+    if (mAntiAlias == true) {
+        int h = mHeight * mAntiAliasReductionCount;
+        int w = mWidth * mAntiAliasReductionCount;
+
+        std::stringstream tmp;
+        tmp << h << " " << w << " " << max;
+        mInputStream.str(tmp.str());
+    } else {
         std::stringstream tmp;
         tmp << mHeight << " " << mWidth << " " << max;
         mInputStream.str(tmp.str());
@@ -187,6 +195,7 @@ void GlutApp::gridApplyColorTable() {
     mInputStream.str("");
     
     takeAction("grid-apply-color-table", mMenuData, mActionData);
+    applyAntiAlias();
 }
 
 
@@ -387,4 +396,51 @@ void GlutApp::createFractal() {
 
 GlutApp::FractalMode GlutApp::getFractalMode() {
     return mFractalMode;
+}
+
+
+//final
+
+void GlutApp::copyOutputToInput1() {
+    mInputStream.clear();
+    mOutputStream.clear();
+    mInputStream.str("");
+    mOutputStream.str("");
+    
+    takeAction("copyo1", mMenuData, mActionData);
+}
+void GlutApp::antiAlias(int reduction_count) {
+    mInputStream.clear();
+    mOutputStream.clear();
+    mInputStream.str("");
+    mOutputStream.str("");
+    
+    {
+        std::stringstream tmp;
+        tmp << reduction_count;
+        mInputStream.str(tmp.str());
+    } 
+    takeAction("anti-alias", mMenuData, mActionData);
+}
+void GlutApp::applyAntiAlias() {
+    if (mAntiAlias == true) {
+        copyOutputImageToImage1(mActionData);
+        antiAlias(mAntiAliasReductionCount);
+    }
+}
+void GlutApp::toggleAntiAlias() {
+    if (mAntiAlias == false) {
+        mAntiAlias = true;
+    } else {
+        mAntiAlias = false;
+    }
+}
+void GlutApp::increaseAntiAliasReductionCount() {
+    mAntiAliasReductionCount += 1;
+}
+void GlutApp::decreaseAntiAliasReductionCount() {
+    mAntiAliasReductionCount -= 1;
+    if (mAntiAliasReductionCount < 2) {
+        mAntiAliasReductionCount = 2;
+    }
 }

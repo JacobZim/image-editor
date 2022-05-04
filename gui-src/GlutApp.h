@@ -52,6 +52,13 @@ public:
 
   FractalMode getFractalMode();
 
+  void copyOutputToInput1();
+  void antiAlias(int reduction_count);
+  void applyAntiAlias();
+  void toggleAntiAlias();
+  void increaseAntiAliasReductionCount();
+  void decreaseAntiAliasReductionCount();
+
 protected:
   int mHeight, mWidth;
   std::stringstream mInputStream;
@@ -67,6 +74,9 @@ protected:
   Color mColor1;
   Color mColor2;
   int mNumColor;
+
+  int mAntiAliasReductionCount;
+  bool mAntiAlias;
 };
 
 #endif /* _GLUTAPP_H_ */
