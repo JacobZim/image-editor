@@ -29,12 +29,44 @@ public:
   void createComplexFractal();
   void createComplexFractal2();
 
+  enum InteractionMode { IM_FRACTAL, IM_COLORTABLE };
+  enum FractalMode { M_MANDELBROT, M_JULIA, M_COMPLEX };
+
+  void displayColorTable();
+  void setInteractionMode(InteractionMode mode);
+  void setColorTable();
+  void decreaseColorTableSize();
+  void increaseColorTableSize();
+  void zoomIn();
+  void zoomOut();
+  void moveLeft();
+  void moveRight();
+  void moveDown();
+  void moveUp();
+  void setFractalMode(FractalMode mode);
+  void increaseMaxNumber();
+  void decreaseMaxNumber();
+  void setAB(int x, int y);
+  void resetPlane();
+  void createFractal();
+
+  FractalMode getFractalMode();
+
 protected:
   int mHeight, mWidth;
   std::stringstream mInputStream;
   std::stringstream mOutputStream;
   ActionData mActionData;
   MenuData mMenuData;
+
+  double mMinX, mMaxX, mMinY, mMaxY;
+  double mA, mB;
+  InteractionMode mInteractionMode;
+  FractalMode mFractalMode;
+  int mMaxNumber;
+  Color mColor1;
+  Color mColor2;
+  int mNumColor;
 };
 
 #endif /* _GLUTAPP_H_ */
