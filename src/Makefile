@@ -10,7 +10,7 @@ all: hello questions_3 ascii_image image_file simple_squares_ascii hero ppm_menu
 
 
 hello: hello.o
-	g++ $(CXXFLAGS) -o hello hello.o
+	g++ $(CXXFLAGS) -o hello hello.o 
 
 hello.o: hello.cpp
 	g++ $(CXXFLAGS) -c -o hello.o hello.cpp 
@@ -18,7 +18,7 @@ hello.o: hello.cpp
 
 
 questions_3: questions_3.o image_menu.h $(OBJECTS)
-	g++ $(CXXFLAGS) -o questions_3 questions_3.o $(OBJECTS)
+	g++ $(CXXFLAGS) -o questions_3 questions_3.o $(OBJECTS) $(LDFLAGS)
 
 questions_3.o : questions_3.cpp image_menu.h 
 	g++ $(CXXFLAGS) -c -o questions_3.o questions_3.cpp 
@@ -26,7 +26,7 @@ questions_3.o : questions_3.cpp image_menu.h
 
 
 ascii_image : ascii_image.o image_menu.h $(OBJECTS)
-	g++ $(CXXFLAGS) -o ascii_image ascii_image.o $(OBJECTS)
+	g++ $(CXXFLAGS) -o ascii_image ascii_image.o $(OBJECTS) $(LDFLAGS)
 
 ascii_image.o : ascii_image.cpp image_menu.h
 	g++ $(CXXFLAGS) -c -o ascii_image.o ascii_image.cpp 
@@ -43,7 +43,7 @@ image_output.o : image_output.cpp image_menu.h
 
 
 image_file : image_file.o image_menu.h $(OBJECTS)
-	g++ $(CXXFLAGS) -o -pthread image_file image_file.o $(OBJECTS)
+	g++ $(CXXFLAGS) -o image_file image_file.o $(OBJECTS) $(LDFLAGS)
 
 image_file.o : image_file.cpp image_menu.h 
 	g++ $(CXXFLAGS) -c -o image_file.o image_file.cpp 
@@ -55,14 +55,14 @@ PPM.o : PPM.cpp image_menu.h
 
 
 hero : hero.o image_menu.h $(OBJECTS)
-	g++ $(CXXFLAGS) -o hero hero.o $(OBJECTS)
+	g++ $(CXXFLAGS) -o hero hero.o $(OBJECTS) $(LDFLAGS)
 
 hero.o : hero.cpp image_menu.h
 	g++ $(CXXFLAGS) -c -o hero.o hero.cpp
 
 
 simple_squares_ascii : simple_squares_ascii.o image_menu.h $(OBJECTS)
-	g++ $(CXXFLAGS) -o simple_squares_ascii simple_squares_ascii.o $(OBJECTS)
+	g++ $(CXXFLAGS) -o simple_squares_ascii simple_squares_ascii.o $(OBJECTS) $(LDFLAGS)
 
 simple_squares_ascii.o : simple_squares_ascii.cpp image_menu.h
 	g++ $(CXXFLAGS) -c -o simple_squares_ascii.o simple_squares_ascii.cpp
@@ -82,7 +82,7 @@ MenuData.o : MenuData.cpp MenuData.h
 
 
 ppm_menu : ppm_menu.o image_menu.h $(OBJECTS)
-	g++ $(CXXFLAGS) -o -pthread $@ $< $(OBJECTS)
+	g++ $(CXXFLAGS) -o $@ $< $(OBJECTS) $(LDFLAGS)
 
 ppm_menu.o : ppm_menu.cpp image_menu.h 
 	g++ $(CXXFLAGS) -c -o $@ $<
