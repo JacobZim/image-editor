@@ -41,6 +41,9 @@ public:
     //exam2
     void orangeFilter(PPM& dst) const;
     PPM& operator*=( const PPM& rhs );
+    //finalexam
+    int antiAliasPixelValue(int n, int row, int column, int channel) const;
+    void antiAlias(const int& n, PPM& dst) const;
 protected:
     int mMaxColorValue;
 private:

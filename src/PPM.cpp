@@ -381,3 +381,28 @@ void PPM::orangeFilter(PPM& dst) const {
         }
     }
 }
+int PPM::antiAliasPixelValue(int n, int row, int column, int channel) const {
+    int totalChannel = 0;
+    int bigRowStart = row * n;
+    int bigColumnStart = column * n;
+    int bigColumnEnd = (column + 1) * n;
+    int bigRowEnd = (row + 1) * n;
+    for (int i = bigColumnStart; i < bigColumnEnd; i++) {
+        for (int j = bigRowStart; j < bigRowEnd; j++) {
+            totalChannel += this->getChannel( j, i, channel);
+        }
+    }
+    return totalChannel / (n * n);
+}
+void PPM::antiAlias(const int& n, PPM& dst) const {
+    dst.setHeight( this->getHeight()/n);
+    dst.setWidth( this->getWidth()/n);
+    dst.setMaxColorValue(this->getMaxColorValue());
+    for (int row = 0; row < dst.getHeight(); row++ ) {
+        for (int col = 0; col < dst.getWidth(); col++ ) {
+            dst.setChannel(row, col, 0, this->antiAliasPixelValue(n, row, col, 0)) ;
+            dst.setChannel(row, col, 1,this->antiAliasPixelValue(n, row, col, 1)) ;
+            dst.setChannel(row, col, 2,this->antiAliasPixelValue(n, row, col, 2)) ;
+        }
+    }
+}

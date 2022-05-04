@@ -50,3 +50,8 @@ void orangeFilter(ActionData& action_data) {
 void timesEqualsPPM(ActionData& action_data) {
     action_data.getInputImage1() *= action_data.getInputImage2();
 }
+//final
+void antiAliasFilter(ActionData& action_data) {
+    int rc = getInteger(action_data, "Reduction count? ");
+    action_data.getInputImage1().antiAlias(rc, action_data.getOutputImage());
+}

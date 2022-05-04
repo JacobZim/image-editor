@@ -60,6 +60,8 @@ void writeUserImage( ActionData& action_data );
 void copyImage( ActionData& action_data );
 void readUserImage1( ActionData& action_data );
 void readUserImage2( ActionData& ation_data );
+//final
+void copyOutputImageToImage1(ActionData& action_data);
 
 // controllers.cpp
 int assignment1( std::istream& is, std::ostream& os );
@@ -96,6 +98,8 @@ void grayFromLinearColorimetric(ActionData& action_data);
 //exam2
 void orangeFilter(ActionData& action_data);
 void timesEqualsPPM(ActionData& action_data);
+//finalexam
+void antiAliasFilter(ActionData& action_data);
 
 //colorTable
 void configureMenu(MenuData& menu_data);

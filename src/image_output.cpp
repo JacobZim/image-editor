@@ -66,3 +66,7 @@ void readUserImage2( ActionData& action_data ) {
     }
     action_data.getInputImage2().readStream(fs);
 }
+
+void copyOutputImageToImage1(ActionData& action_data) {
+	action_data.getInputImage1() = action_data.getOutputImage();
+}

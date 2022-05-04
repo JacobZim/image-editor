@@ -161,6 +161,9 @@ void configureMenu( MenuData& menu_data ) {
     // ActionFunctionType cF = &calculateFractal;
     ActionFunctionType cFST = &calculateFractalSingleThread;
 
+    ActionFunctionType aAF = &antiAliasFilter;
+    ActionFunctionType cOITI = &copyOutputImageToImage1;
+
     menu_data.addAction("fractal-plane-size", sFPS, "Set the dimensions of the grid in the complex plane.");
     menu_data.addAction("fractal-calculate", cF, "Calculate the escape values for the fractal.");
 
@@ -171,6 +174,9 @@ void configureMenu( MenuData& menu_data ) {
     menu_data.addAction("mandelbrot", sMF, "Choose to make a Mandelbrot set.");
 
     menu_data.addAction("fractal-calculate-single-thread", cFST, "Calculate the escape values for the fractal, single-thread.");
+
+    menu_data.addAction("anti-alias", aAF, "Set output image from Anti-alias filter on input image 1.");
+    menu_data.addAction("copyo1", cOITI, "Copy output image to input image 1.");
     
 }
 
