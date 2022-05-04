@@ -43,7 +43,7 @@ image_output.o : image_output.cpp image_menu.h
 
 
 image_file : image_file.o image_menu.h $(OBJECTS)
-	g++ $(CXXFLAGS) -o image_file image_file.o $(OBJECTS)
+	g++ $(CXXFLAGS) -o -pthread image_file image_file.o $(OBJECTS)
 
 image_file.o : image_file.cpp image_menu.h 
 	g++ $(CXXFLAGS) -c -o image_file.o image_file.cpp 

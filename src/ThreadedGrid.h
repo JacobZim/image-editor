@@ -7,6 +7,7 @@
 #include <thread>
 #include <exception>
 #include <vector>
+#include <pthread.h>
 // #include <cslib>
 
 class ThreadedGrid: public NumberGrid {
