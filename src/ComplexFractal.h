@@ -2,11 +2,11 @@
 
 #ifndef _COMPLEX_FRACTAL_H_
 #define _COMPLEX_FRACTAL_H_
-#include "NumberGrid.h"
+#include "ThreadedGrid.h"
 #include <stdlib.h>
 #include <cmath>
 
-class ComplexFractal: public NumberGrid {
+class ComplexFractal: public ThreadedGrid {
 public:
     ComplexFractal();
     ComplexFractal( const int& height, const int& width, const double& min_x, const double& max_x, const double& min_y, const double& max_y );

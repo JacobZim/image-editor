@@ -1,7 +1,7 @@
 
 
 CXXFLAGS := -std=c++11 -Werror -Wall -Wpedantic -Wextra 
-OBJECTS := Image.o image_drawing.o image_output.o PPM.o user_io.o controllers.o MenuData.o ActionData.o image_filters.o NumberGrid.o ColorTable.o ComplexFractal.o JuliaSet.o MandelbrotSet.o
+OBJECTS := Image.o image_drawing.o image_output.o PPM.o user_io.o controllers.o MenuData.o ActionData.o image_filters.o NumberGrid.o ColorTable.o ComplexFractal.o JuliaSet.o MandelbrotSet.o ThreadedGrid.o
 HEADERFILE := NumberGrid.h
 LDFLAGS := -lpthread #add into link commands for executables for multithreading
 
@@ -104,6 +104,9 @@ JuliaSet.o : JuliaSet.cpp JuliaSet.h
 	g++ $(CXXFLAGS) -c -o $@ $<
 
 MandelbrotSet.o : MandelbrotSet.cpp MandelbrotSet.h 
+	g++ $(CXXFLAGS) -c -o $@ $<
+
+ThreadedGrid.o : ThreadedGrid.cpp ThreadedGrid.h 
 	g++ $(CXXFLAGS) -c -o $@ $<
 
 clean:

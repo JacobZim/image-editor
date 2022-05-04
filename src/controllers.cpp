@@ -158,6 +158,9 @@ void configureMenu( MenuData& menu_data ) {
 
     ActionFunctionType sMF = &setMandelbrotFractal;
 
+    // ActionFunctionType cF = &calculateFractal;
+    ActionFunctionType cFST = &calculateFractalSingleThread;
+
     menu_data.addAction("fractal-plane-size", sFPS, "Set the dimensions of the grid in the complex plane.");
     menu_data.addAction("fractal-calculate", cF, "Calculate the escape values for the fractal.");
 
@@ -166,6 +169,8 @@ void configureMenu( MenuData& menu_data ) {
     menu_data.addAction("julia", sJF, "Choose to make a Julia set.");
 
     menu_data.addAction("mandelbrot", sMF, "Choose to make a Mandelbrot set.");
+
+    menu_data.addAction("fractal-calculate-single-thread", cFST, "Calculate the escape values for the fractal, single-thread.");
     
 }
 

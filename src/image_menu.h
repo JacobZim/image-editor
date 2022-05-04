@@ -50,6 +50,8 @@ void setFractalPlaneSize(ActionData& action_data);
 void calculateFractal(ActionData& action_data);
 //assignment 11
 void setJuliaParameters(ActionData& action_data);
+//assignment 12
+void calculateFractalSingleThread(ActionData& action_data);
 
 // image_output.cpp
 void drawAsciiImage( ActionData& action_data );
