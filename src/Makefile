@@ -82,7 +82,7 @@ MenuData.o : MenuData.cpp MenuData.h
 
 
 ppm_menu : ppm_menu.o image_menu.h $(OBJECTS)
-	g++ $(CXXFLAGS) -o $@ $< $(OBJECTS)
+	g++ $(CXXFLAGS) -o -pthread $@ $< $(OBJECTS)
 
 ppm_menu.o : ppm_menu.cpp image_menu.h 
 	g++ $(CXXFLAGS) -c -o $@ $<

@@ -1,7 +1,6 @@
 #include "ThreadedGrid.h"
 
 
-
 ThreadedGrid::ThreadedGrid(): NumberGrid(), m_task_list() {
 }
 ThreadedGrid::ThreadedGrid(const int& height, const int& width):
